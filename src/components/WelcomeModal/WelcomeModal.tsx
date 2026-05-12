@@ -1,35 +1,36 @@
-// import { useRef } from "react";
-import { use, useState } from "react";
+import { useState } from "react";
 import "./WelcomeModal.css";
 
-function WelcomeModal() {
-  const name: string | null = localStorage.getItem("name");
+type nameProps = {
+  setIsName: string | null;
+};
 
-  // const [modalRef, setModalRef] = useRef<string>("");
+function WelcomeModal({ setIsName }: nameProps) {
+  const name: string | null = localStorage.getItem("name");
   const [userName, setUserName] = useState<string>(name || "");
 
   function saveName(): void {
     localStorage.setItem("name", userName);
   }
 
-  console.log(userName);
-
   function handleSubmit(e: any) {
     e.preventDefault();
     saveName();
+    console.log(userName);
   }
 
   return (
-    // add useRef? why?
-    <form className="welcome-modal" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Enter your name"
-        onChange={(e) => setUserName(e.target.value)}
-        value={userName}
-      />
-      <button>Enter</button>
-    </form>
+    <div className="modal-container">
+      <form className="welcome-modal" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter your name"
+          onChange={(e) => setUserName(e.target.value)}
+          value={userName}
+        />
+        <button>Enter</button>
+      </form>
+    </div>
   );
 }
 
