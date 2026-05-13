@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       {!isName && <WelcomeModal setIsName={setIsName} />}
-      {isName && <Welcome name={name} />}
+      {isName && <Welcome name={isName} />}
     </>
   );
 }

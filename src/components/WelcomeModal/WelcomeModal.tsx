@@ -20,17 +20,20 @@ function WelcomeModal({ setIsName }: nameProps) {
   }
 
   return (
-    <div className="modal-container">
-      <form className="welcome-modal" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter your name"
-          onChange={(e) => setUserName(e.target.value)}
-          value={userName}
-        />
-        <button>Enter</button>
-      </form>
-    </div>
+    <>
+      <div className="modal-container">
+        <h1>mindful-app</h1>
+        <form className="welcome-modal" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Enter your name"
+            onChange={(e) => setUserName(e.target.value)}
+            value={userName}
+          />
+          <button>Enter</button>
+        </form>
+      </div>
+    </>
   );
 }
 

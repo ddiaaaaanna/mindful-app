@@ -3,6 +3,21 @@
   flex-direction: column;
   width: fit-content;
   gap: 20px;
+  /* border: 1px solid red; */
+  border-radius: 8px;
+  backdrop-filter: blur(90px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* backdrop-filter: url(./my-svg.svg#myfilter); */
+  padding: 30px;
+  background: transparent;
+}
+
+h1 {
+  font-size: 72px;
+  padding: 20px;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
 }
 
 .modal-container {
@@ -14,23 +29,36 @@
 }
 
 .welcome-modal input {
-  padding: 24px 42px;
+  width: 300px;
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+  color: rgba(45, 45, 45, 0.782);
 }
 
 .welcome-modal button {
-  padding: 12px 24px;
+  padding: 10px 12px;
+  color: rgba(0, 0, 0, 0.574);
 }
 
 .welcome-modal input,
 button {
   border-radius: 6px;
-  border: none;
+  background: rgba(255, 255, 255, 0.108);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .welcome-modal button:hover {
   cursor: pointer;
+  background: rgba(255, 255, 255, 0.375);
 }
 
 .welcome-modal input:focus {
   outline: none;
+  background: rgba(255, 255, 255, 0.375);
+}
+
+.welcome-modal input::placeholder {
+  color: rgba(45, 45, 45, 0.29);
+  font-size: 16px;
 }
