@@ -7,7 +7,7 @@ type userNameProps = {
 function Welcome({ name }: userNameProps) {
   return (
     <>
-      <h1>Welcome, {name} 𖤓</h1>
+      {name === "anonymous" ? <h1>Welcome ⏾</h1> : <h1>Welcome, {name} 𖤓</h1>}
     </>
   );
 }

@@ -3,13 +3,17 @@
   flex-direction: column;
   width: fit-content;
   gap: 20px;
-  /* border: 1px solid red; */
   border-radius: 8px;
   backdrop-filter: blur(90px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  /* backdrop-filter: url(./my-svg.svg#myfilter); */
   padding: 30px;
   background: transparent;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 h1 {
@@ -36,19 +40,19 @@ h1 {
   color: rgba(45, 45, 45, 0.782);
 }
 
-.welcome-modal button {
+.modal-main-btn {
   padding: 10px 12px;
   color: rgba(0, 0, 0, 0.574);
 }
 
 .welcome-modal input,
-button {
+.modal-main-btn {
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.108);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.welcome-modal button:hover {
+.modal-main-btn:hover {
   cursor: pointer;
   background: rgba(255, 255, 255, 0.375);
 }
@@ -61,4 +65,15 @@ button {
 .welcome-modal input::placeholder {
   color: rgba(45, 45, 45, 0.29);
   font-size: 16px;
+}
+
+.anonymous-btn {
+  background-color: transparent;
+  border: none;
+  color: #7e648a66;
+}
+
+.anonymous-btn:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
