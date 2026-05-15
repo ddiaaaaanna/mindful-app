@@ -10,3 +10,11 @@ body {
     rgba(102, 224, 255, 1) 100%
   );
 }
+
+.card-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}

@@ -1,0 +1,32 @@
+.card-content {
+  height: 300px;
+  width: 300px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  backdrop-filter: blur(200px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.card-title {
+  font-size: 40px;
+  margin: 0;
+  color: rgba(135, 135, 135, 0.711);
+  text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
+}
+
+.card-content:hover {
+  cursor: pointer;
+  transform: translateY(-10px);
+}
+
+.card-emoji {
+  margin: 0;
+  font-size: 40px;
+  color: rgba(135, 135, 135, 0.711);
+  text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
+}

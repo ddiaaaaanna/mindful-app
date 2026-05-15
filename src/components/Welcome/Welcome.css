@@ -1,5 +1,21 @@
+:root {
+  --main-font-color: rgba(235, 248, 241, 0.671);
+}
+
 h1 {
   text-align: center;
   font-size: 64px;
-  color: rgba(235, 248, 241, 0.671);
+  color: var(--main-font-color);
+}
+
+.main-title {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.main-subtitle {
+  color: rgba(117, 117, 117, 0.554);
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 2px;
 }
