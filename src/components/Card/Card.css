@@ -22,6 +22,7 @@
 .card-content:hover {
   cursor: pointer;
   transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .card-emoji {
@@ -29,4 +30,20 @@
   font-size: 40px;
   color: rgba(135, 135, 135, 0.711);
   text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
+}
+
+.card-description {
+  padding: 20px;
+  text-align: center;
+  color: rgba(135, 135, 135, 0.804);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

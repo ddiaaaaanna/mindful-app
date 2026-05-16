@@ -14,9 +14,23 @@ function App() {
       {isName && <Welcome name={isName} />}
 
       <div className="card-container">
-        <Card title={"Meditate"} emoji={"꩜"} />
-        <Card title={"Reflect"} emoji={"꥟"} />
-        <Card title={"Explore"} emoji={"❀"} />
+        <Card
+          title={"Meditate"}
+          emoji={"꩜"}
+          description={
+            "Ground yourself in the present. Choose 1, 3, or 5 minutes of stillness."
+          }
+        />
+        <Card
+          title={"Reflect"}
+          emoji={"꥟"}
+          description={"Log your mood and see how you feel over time."}
+        />
+        <Card
+          title={"Explore"}
+          emoji={"❀"}
+          description={"Discover a new mindfulness quote each day."}
+        />
       </div>
     </>
   );
