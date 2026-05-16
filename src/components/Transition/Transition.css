@@ -1,0 +1,18 @@
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.transition-text {
+  animation: breathe 1s ease-in-out;
+}
+
+.transition-container {
+  height: 100vh;
+  width: 100vw;
+}

@@ -2,9 +2,10 @@ import "./Meditation.css";
 
 type MeditationProps = {
   setActivePage: (page: string) => void;
+  emoji: string;
 };
 
-function Meditation({ setActivePage }: MeditationProps) {
+function Meditation({ setActivePage, emoji }: MeditationProps) {
   return (
     <div className="meditation-page">
       <div className="meditation-header flex-center">
@@ -14,10 +15,22 @@ function Meditation({ setActivePage }: MeditationProps) {
         </button>
       </div>
 
-      <div className="meditation-page-content flex-center">
-        <button className="meditation-choice-btn">1 min</button>
-        <button className="meditation-choice-btn">2 min</button>
-        <button className="meditation-choice-btn">3 min</button>
+      <div className="meditation-page-content">
+        <p className="meditation-card-description">
+          Choose the duration of your practice
+        </p>
+        <div className="choice-btn-container flex-center">
+          <button className="meditation-choice-btn">1 min</button>
+          <button className="meditation-choice-btn">2 min</button>
+          <button className="meditation-choice-btn">3 min</button>
+        </div>
+
+        <p
+          className="flex-center card-emoji
+        "
+        >
+          {emoji}
+        </p>
       </div>
     </div>
   );

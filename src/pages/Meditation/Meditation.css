@@ -15,9 +15,9 @@
   width: 450px;
   margin: 0 auto;
   backdrop-filter: blur(90px);
+  box-shadow: var(--card-shadow);
   border: var(--glass-border);
   border-radius: var(--border-radius);
-  gap: 30px;
   padding: 20px;
 }
 
@@ -26,7 +26,11 @@
   background: var(--glass-bg);
   border: var(--glass-border);
   color: var(--text-dark);
-  padding: 4px 6px;
+  padding: 8px 12px;
+}
+
+.choice-btn-container {
+  gap: 30px;
 }
 
 .meditation-choice-btn:hover {
@@ -41,4 +45,26 @@
 
 .home-btn:hover {
   text-decoration: underline;
+}
+
+.meditation-card-description {
+  color: var(--text-dark);
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.meditation-page-content > .card-emoji {
+  font-size: 6em;
+  animation: pulse 7s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
 }

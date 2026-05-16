@@ -3,9 +3,10 @@ import "./WelcomeModal.css";
 
 type nameProps = {
   setIsName: React.Dispatch<React.SetStateAction<string | null>>;
+  setIsTransitioning: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function WelcomeModal({ setIsName }: nameProps) {
+function WelcomeModal({ setIsName, setIsTransitioning }: nameProps) {
   const name: string | null = localStorage.getItem("name");
   const [userName, setUserName] = useState<string>(name || "");
 
@@ -16,18 +17,22 @@ function WelcomeModal({ setIsName }: nameProps) {
   function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     document.body.style.cursor = "wait";
+    setIsTransitioning(true);
     setTimeout(() => {
       saveName();
       setIsName(userName);
+      setIsTransitioning(false);
       document.body.style.cursor = "default";
     }, 1000);
   }
 
   function anonUser() {
     document.body.style.cursor = "wait";
+    setIsTransitioning(true);
     setTimeout(() => {
       localStorage.setItem("name", "anonymous");
       setIsName("anonymous");
+      setIsTransitioning(false);
       document.body.style.cursor = "default";
     }, 1000);
   }

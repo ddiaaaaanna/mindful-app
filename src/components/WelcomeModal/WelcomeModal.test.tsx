@@ -6,8 +6,14 @@ describe("WelcomeModal", () => {
     vi.useFakeTimers();
 
     const mockSetIsName = vi.fn();
+    const mockSetIsTransitioning = vi.fn();
 
-    render(<WelcomeModal setIsName={mockSetIsName} />);
+    render(
+      <WelcomeModal
+        setIsName={mockSetIsName}
+        setIsTransitioning={mockSetIsTransitioning}
+      />,
+    );
 
     const input = screen.getByPlaceholderText("Enter your name");
     fireEvent.change(input, { target: { value: "Marnie" } });
@@ -23,8 +29,14 @@ describe("WelcomeModal", () => {
     vi.useFakeTimers();
 
     const anonymousMock = vi.fn();
+    const mockSetIsTransitioning = vi.fn();
 
-    render(<WelcomeModal setIsName={anonymousMock} />);
+    render(
+      <WelcomeModal
+        setIsName={anonymousMock}
+        setIsTransitioning={mockSetIsTransitioning}
+      />,
+    );
 
     const anonButton = screen.getByText("Continue without name");
     fireEvent.click(anonButton);

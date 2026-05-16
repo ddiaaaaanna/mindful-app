@@ -6,19 +6,27 @@ import Card from "./components/Card/Card.tsx";
 import Meditation from "./pages/Meditation/Meditation.tsx";
 import Reflection from "./pages/Reflection/Reflection.tsx";
 import Exploration from "./pages/Exploration/Exploration.tsx";
+import Transition from "./components/Transition/Transition.tsx";
 
 function App() {
   const name: string | null = localStorage.getItem("name");
   const [isName, setIsName] = useState<string | null>(name);
   const [activePage, setActivePage] = useState<string>("");
+  const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
 
   console.log(activePage);
 
   return (
     <>
+      {isTransitioning && <Transition />}
       {!activePage && (
         <>
-          {!isName && <WelcomeModal setIsName={setIsName} />}
+          {!isName && (
+            <WelcomeModal
+              setIsName={setIsName}
+              setIsTransitioning={setIsTransitioning}
+            />
+          )}
           {isName && <Welcome name={isName} />}
 
           <div className="card-container flex-center">
@@ -47,7 +55,7 @@ function App() {
       )}
 
       {activePage === "meditate" && (
-        <Meditation setActivePage={setActivePage} />
+        <Meditation setActivePage={setActivePage} emoji={"꩜"} />
       )}
       {activePage === "reflect" && <Reflection setActivePage={setActivePage} />}
       {activePage === "explore" && (

@@ -5,7 +5,7 @@
   flex-direction: column;
   backdrop-filter: blur(200px);
   border: var(--glass-border);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  box-shadow: var(--card-shadow);
   transition: transform 0.3s ease;
 }
 
@@ -20,13 +20,6 @@
   cursor: pointer;
   transform: translateY(-10px);
   background: rgba(255, 255, 255, 0.2);
-}
-
-.card-emoji {
-  margin: 0;
-  font-size: 40px;
-  color: var(--text-main);
-  text-shadow: var(--text-shadow);
 }
 
 .card-description {
