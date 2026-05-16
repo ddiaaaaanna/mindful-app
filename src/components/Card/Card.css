@@ -1,13 +1,10 @@
 .card-content {
   height: 300px;
   width: 300px;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: var(--border-radius);
   flex-direction: column;
   backdrop-filter: blur(200px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: var(--glass-border);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
   transition: transform 0.3s ease;
 }
@@ -15,8 +12,8 @@
 .card-title {
   font-size: 40px;
   margin: 0;
-  color: rgba(135, 135, 135, 0.711);
-  text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
+  color: var(--text-main);
+  text-shadow: var(--text-shadow);
 }
 
 .card-content:hover {
@@ -28,14 +25,14 @@
 .card-emoji {
   margin: 0;
   font-size: 40px;
-  color: rgba(135, 135, 135, 0.711);
-  text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
+  color: var(--text-main);
+  text-shadow: var(--text-shadow);
 }
 
 .card-description {
   padding: 20px;
   text-align: center;
-  color: rgba(135, 135, 135, 0.804);
+  color: var(--text-main);
   animation: fadeIn 0.3s ease;
 }
 

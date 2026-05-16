@@ -3,9 +3,9 @@
   flex-direction: column;
   width: fit-content;
   gap: 20px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   backdrop-filter: blur(90px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: var(--glass-border);
   padding: 30px;
   background: transparent;
 }
@@ -16,20 +16,9 @@
   gap: 20px;
 }
 
-h1 {
-  font-size: 72px;
-  padding: 20px;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
-  text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
-}
-
 .modal-container {
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .welcome-modal input {
@@ -47,19 +36,18 @@ h1 {
 
 .welcome-modal input,
 .modal-main-btn {
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.108);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--border-radius-sm);
+  background: var(--glass-bg);
+  border: var(--glass-border);
 }
 
 .modal-main-btn:hover {
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.375);
+  background: var(--glass-bg-hover);
 }
 
 .welcome-modal input:focus {
   outline: none;
-  background: rgba(255, 255, 255, 0.375);
+  background: var(--glass-bg-hover);
 }
 
 .welcome-modal input::placeholder {
@@ -74,6 +62,5 @@ h1 {
 }
 
 .anonymous-btn:hover {
-  cursor: pointer;
   text-decoration: underline;
 }

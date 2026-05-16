@@ -34,7 +34,7 @@ function WelcomeModal({ setIsName }: nameProps) {
 
   return (
     <>
-      <div className="modal-container">
+      <div className="modal-container flex-center">
         <h1>mindful-app</h1>
         <div className="modal-content">
           <form className="welcome-modal" onSubmit={handleSubmit}>

@@ -5,16 +5,18 @@ type CardProps = {
   title: string;
   emoji: string;
   description: string;
+  onClick: () => void;
 };
 
-function Card({ title, emoji, description }: CardProps) {
+function Card({ title, emoji, description, onClick }: CardProps) {
   const [isActive, setIsActive] = useState<boolean>(false);
 
   return (
     <div
-      className="card-content"
+      className="card-content flex-center"
       onMouseEnter={() => setIsActive(true)}
       onMouseLeave={() => setIsActive(false)}
+      onClick={onClick}
     >
       {!isActive ? (
         <>

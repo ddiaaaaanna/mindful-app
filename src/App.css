@@ -1,7 +1,3 @@
-* {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
 body {
   background: #deaeee;
   background: radial-gradient(
@@ -13,8 +9,5 @@ body {
 
 .card-container {
   margin-top: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 40px;
 }
