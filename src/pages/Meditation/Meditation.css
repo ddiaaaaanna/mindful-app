@@ -1,0 +1,44 @@
+.meditation-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.meditation-header {
+  padding: 20px;
+}
+
+.meditation-page-content {
+  height: 250px;
+  width: 450px;
+  margin: 0 auto;
+  backdrop-filter: blur(90px);
+  border: var(--glass-border);
+  border-radius: var(--border-radius);
+  gap: 30px;
+  padding: 20px;
+}
+
+.meditation-choice-btn {
+  border-radius: var(--border-radius-sm);
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  color: var(--text-dark);
+  padding: 4px 6px;
+}
+
+.meditation-choice-btn:hover {
+  background: var(--glass-bg-hover);
+}
+
+.home-btn {
+  background-color: transparent;
+  border: none;
+  color: var(--text-dark);
+}
+
+.home-btn:hover {
+  text-decoration: underline;
+}
