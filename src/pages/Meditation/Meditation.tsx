@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Meditation.css";
+import MeditationTimer from "../../components/MeditationTimer/MeditationTimer";
 
 type MeditationProps = {
   setActivePage: (page: string) => void;
@@ -64,6 +65,9 @@ function Meditation({ setActivePage, emoji }: MeditationProps) {
             </div>
           </div>
         </>
+      )}
+      {meditationStep === "timer" && (
+        <MeditationTimer meditationTimer={meditationTimer} />
       )}
     </>
   );

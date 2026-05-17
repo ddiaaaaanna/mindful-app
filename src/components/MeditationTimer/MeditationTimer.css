@@ -1,0 +1,65 @@
+.timer-page {
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.timer-container {
+  height: fit-content;
+  width: 450px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: var(--card-shadow-m);
+  border: var(--glass-border);
+  border-radius: var(--border-radius);
+  padding: 20px;
+}
+
+.timer-description {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-main);
+}
+
+.timer-container > .card-emoji {
+  text-shadow: none;
+  padding: 20px;
+}
+
+.border-glow {
+  animation: borderGlow 4s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.border-glow.running {
+  animation-play-state: running;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  /* padding: 10px 0; */
+}
+
+.btn-container > .action-btn {
+  margin: 0;
+}
+
+@keyframes borderGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+  }
+}
+
+.border-glow-paused {
+  animation-play-state: paused;
+}
