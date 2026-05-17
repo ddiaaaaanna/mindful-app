@@ -1,6 +1,7 @@
 :root {
   --glass-border: 1px solid rgba(255, 255, 255, 0.3);
   --glass-bg: rgba(255, 255, 255, 0.108);
+  --glass-bg-dark: rgba(128, 128, 128, 0.108);
   --glass-bg-hover: rgba(255, 255, 255, 0.375);
   --text-title: rgba(235, 248, 241, 0.671);
   --text-dark: rgba(71, 71, 71, 0.938);
@@ -39,4 +40,29 @@ button {
   font-size: 40px;
   color: var(--text-main);
   text-shadow: var(--text-shadow);
+}
+
+/* animation */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.action-btn {
+  display: block;
+  border-radius: var(--border-radius-sm);
+  background: var(--glass-bg-hover);
+  border: var(--glass-border);
+  color: var(--text-dark);
+  padding: 10px 14px;
+  margin: 10px auto;
+}
+
+.selected {
+  background: var(--glass-bg-hover);
 }

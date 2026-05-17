@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  animation: fadeIn 0.5s ease;
 }
 
 .meditation-header {
@@ -11,7 +12,7 @@
 }
 
 .meditation-page-content {
-  height: 250px;
+  height: fit-content;
   width: 450px;
   margin: 0 auto;
   backdrop-filter: blur(90px);
@@ -23,10 +24,11 @@
 
 .meditation-choice-btn {
   border-radius: var(--border-radius-sm);
-  background: var(--glass-bg);
+  background: var(--glass-bg-dark);
   border: var(--glass-border);
   color: var(--text-dark);
   padding: 8px 12px;
+  transition: background-color 0.4s ease;
 }
 
 .choice-btn-container {
@@ -57,6 +59,11 @@
 .meditation-page-content > .card-emoji {
   font-size: 6em;
   animation: pulse 7s ease-in-out infinite;
+  /* margin: 0 0 30px; */
+}
+
+.meditation-page-content > .action-btn {
+  animation: fadeIn 0.3s ease;
 }
 
 @keyframes pulse {
@@ -67,4 +74,8 @@
   50% {
     transform: scale(1.15);
   }
+}
+
+.meditation-page-content > .action-btn:hover {
+  background-color: var(--glass-bg);
 }
