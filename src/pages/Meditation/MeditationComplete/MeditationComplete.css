@@ -10,6 +10,8 @@
   resize: none;
   padding: 20px;
   transition: box-shadow 0.3s ease;
+  color: var(--text-input);
+  font-size: 16px;
 }
 
 .note-txtarea:focus {
@@ -22,5 +24,9 @@
 }
 
 .completion-container {
+  animation: fadeIn 1s ease;
+}
+
+.note-success-container > .description {
   animation: fadeIn 1s ease;
 }

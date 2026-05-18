@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./MeditationComplete.css";
 
 type MeditationCompleteProps = {
@@ -5,22 +6,54 @@ type MeditationCompleteProps = {
 };
 
 function MeditationComplete({ setActivePage }: MeditationCompleteProps) {
+  const [noteText, setNoteText] = useState<string>("");
+  const [noteSaved, setNoteSaved] = useState<boolean>(false);
+
+  function saveNote(): void {
+    const notes = JSON.parse(localStorage.getItem("notes") ?? "[]");
+
+    if (!noteText) {
+      return;
+    }
+
+    notes.push({ text: noteText, date: new Date().toLocaleDateString() });
+    setNoteSaved(true);
+    setNoteText("");
+
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }
+
   return (
     <div className="completion-container">
-      <p className="description">
-        Amazing! Take a moment to notice how you feel.
-      </p>
-
-      <div className="note-container">
-        <textarea
-          className="note-txtarea"
-          placeholder="Reflect on how you felt during this session..."
-        ></textarea>
-        <div className="btn-container flex-center">
-          <button className="action-btn">Save note</button>
-          <button className="action-btn">Journal History</button>
+      {!noteSaved && (
+        <>
+          <p className="description">
+            Amazing! Take a moment to notice how you feel.
+          </p>
+          <div className="note-container">
+            <textarea
+              className="note-txtarea"
+              placeholder="Reflect on how you felt during this session..."
+              onChange={(e) => setNoteText(e.target.value)}
+              value={noteText}
+            ></textarea>
+            <div className="btn-container flex-center">
+              <button className="action-btn" onClick={() => saveNote()}>
+                Save note
+              </button>
+              <button className="action-btn">Journal History</button>
+            </div>
+          </div>{" "}
+        </>
+      )}
+      {noteSaved && (
+        <div className="note-success-container">
+          <p className="description">Your note was saved.</p>
+          <button className="action-btn" onClick={() => setActivePage("")}>
+            Home
+          </button>
         </div>
-      </div>
+      )}
     </div>
   );
 }
