@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Meditation.css";
-import MeditationTimer from "../../components/MeditationTimer/MeditationTimer";
+import MeditationTimer from "../Meditation/MeditationTimer/MeditationTimer.tsx";
 
 type MeditationProps = {
   setActivePage: React.Dispatch<React.SetStateAction<string>>;
@@ -63,7 +63,10 @@ function Meditation({ setActivePage, emoji }: MeditationProps) {
         </div>
       )}
       {meditationStep === "timer" && (
-        <MeditationTimer meditationTimer={meditationTimer} />
+        <MeditationTimer
+          meditationTimer={meditationTimer}
+          setActivePage={setActivePage}
+        />
       )}
     </>
   );

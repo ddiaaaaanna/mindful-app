@@ -74,3 +74,10 @@ button {
 .selected {
   background: var(--glass-bg-hover);
 }
+
+.description {
+  color: var(--text-dark);
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
