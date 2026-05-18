@@ -59,7 +59,6 @@
 .meditation-page-content > .card-emoji {
   font-size: 6em;
   animation: pulse 7s ease-in-out infinite;
-  /* margin: 0 0 30px; */
 }
 
 .meditation-page-content > .action-btn {

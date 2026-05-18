@@ -3,7 +3,7 @@ import Welcome from "../../components/Welcome/Welcome.tsx";
 import WelcomeModal from "../../components/WelcomeModal/WelcomeModal.tsx";
 import Card from "../../components/Card/Card.tsx";
 
-type HomeTypes = {
+type HomeProps = {
   isName: string | null;
   setIsName: React.Dispatch<React.SetStateAction<string | null>>;
   setIsTransitioning: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,7 +15,7 @@ function Home({
   setIsName,
   setIsTransitioning,
   setActivePage,
-}: HomeTypes) {
+}: HomeProps) {
   return (
     <>
       {!isName && (

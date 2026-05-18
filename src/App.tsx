@@ -12,8 +12,6 @@ function App() {
   const [activePage, setActivePage] = useState<string>("");
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
 
-  console.log(activePage);
-
   return (
     <>
       {isTransitioning && <Transition />}

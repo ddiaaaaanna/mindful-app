@@ -6,11 +6,12 @@
   --text-title: rgba(235, 248, 241, 0.671);
   --text-dark: rgba(71, 71, 71, 0.938);
   --text-main: rgba(135, 135, 135, 0.711);
+  --text-input: rgba(45, 45, 45, 0.782);
   --border-radius: 8px;
   --border-radius-sm: 6px;
   --text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
   --card-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  --card-shadow-m: 0 0 30px rgba(255, 255, 255, 0.35);
+  --card-shadow-md: 0 0 30px rgba(255, 255, 255, 0.35);
 }
 
 body {
@@ -25,7 +26,6 @@ body {
 }
 
 h1 {
-  color: var(--text-title);
   font-size: 72px;
   padding: 20px;
   color: transparent;

@@ -12,7 +12,7 @@
   width: 450px;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.3);
-  box-shadow: var(--card-shadow-m);
+  box-shadow: var(--card-shadow-md);
   border: var(--glass-border);
   border-radius: var(--border-radius);
   padding: 20px;

@@ -1,14 +1,16 @@
 import "./MeditationTimer.css";
 import { useEffect, useState } from "react";
 
-type TimerTypes = {
+type MeditationTimerProps = {
   meditationTimer: number;
 };
 
-function MeditationTimer({ meditationTimer }: TimerTypes) {
+function MeditationTimer({ meditationTimer }: MeditationTimerProps) {
   const [timeLeft, setTimeLeft] = useState(meditationTimer);
   const [timerActive, setTimerActive] = useState<boolean>(false);
   const [hasStarted, setHasStarted] = useState<boolean>(false);
+
+  const containerClass = `timer-container ${hasStarted && timeLeft > 0 ? "border-glow" : ""} ${timerActive ? "running" : ""}`;
 
   useEffect(() => {
     if (timerActive) {
@@ -28,9 +30,7 @@ function MeditationTimer({ meditationTimer }: TimerTypes) {
 
   return (
     <div className="timer-page flex-center">
-      <div
-        className={`timer-container ${hasStarted && timeLeft > 0 ? "border-glow" : ""} ${timerActive ? "running" : ""}`}
-      >
+      <div className={containerClass}>
         <p className="timer-description">
           Focus on your breath. Notice your thoughts, observe them, don't fight
           them. When your mind wanders, gently return to the present.
