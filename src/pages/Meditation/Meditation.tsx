@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AppContext } from "../../context/AppContext.tsx";
 import "./Meditation.css";
 import MeditationTimer from "../Meditation/MeditationTimer/MeditationTimer.tsx";
 
 type MeditationProps = {
-  setActivePage: React.Dispatch<React.SetStateAction<string>>;
   emoji: string;
 };
 
@@ -12,9 +12,13 @@ type Duration = {
   value: number;
 };
 
-function Meditation({ setActivePage, emoji }: MeditationProps) {
+function Meditation({ emoji }: MeditationProps) {
   const [meditationTimer, setMeditationTimer] = useState<number>(0);
   const [meditationStep, setMeditationStep] = useState<string>("choose");
+
+  const context = useContext(AppContext);
+  if (!context) return null;
+  const { setActivePage } = context;
 
   const durations: Duration[] = [
     { label: "1 min", value: 60 },
@@ -63,10 +67,7 @@ function Meditation({ setActivePage, emoji }: MeditationProps) {
         </div>
       )}
       {meditationStep === "timer" && (
-        <MeditationTimer
-          meditationTimer={meditationTimer}
-          setActivePage={setActivePage}
-        />
+        <MeditationTimer meditationTimer={meditationTimer} />
       )}
     </>
   );

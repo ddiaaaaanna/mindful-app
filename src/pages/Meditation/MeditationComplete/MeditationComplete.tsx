@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./MeditationComplete.css";
+import { AppContext } from "../../../context/AppContext";
 
-type MeditationCompleteProps = {
-  setActivePage: React.Dispatch<React.SetStateAction<string>>;
-};
-
-function MeditationComplete({ setActivePage }: MeditationCompleteProps) {
+function MeditationComplete() {
   const [noteText, setNoteText] = useState<string>("");
   const [noteSaved, setNoteSaved] = useState<boolean>(false);
+
+  const context = useContext(AppContext);
+  if (!context) return null;
+  const { setActivePage } = context;
 
   function saveNote(): void {
     const notes = JSON.parse(localStorage.getItem("notes") ?? "[]");

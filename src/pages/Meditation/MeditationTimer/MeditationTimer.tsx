@@ -1,19 +1,20 @@
 import MeditationComplete from "../MeditationComplete/MeditationComplete";
 import "./MeditationTimer.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { AppContext } from "../../../context/AppContext";
 
 type MeditationTimerProps = {
   meditationTimer: number;
-  setActivePage: React.Dispatch<React.SetStateAction<string>>;
 };
 
-function MeditationTimer({
-  meditationTimer,
-  setActivePage,
-}: MeditationTimerProps) {
+function MeditationTimer({ meditationTimer }: MeditationTimerProps) {
   const [timeLeft, setTimeLeft] = useState(meditationTimer);
   const [timerActive, setTimerActive] = useState<boolean>(false);
   const [hasStarted, setHasStarted] = useState<boolean>(false);
+
+  const context = useContext(AppContext);
+  if (!context) return null;
+  const { setActivePage } = context;
 
   const containerClass = `timer-container ${hasStarted && timeLeft > 0 ? "border-glow" : ""} ${timerActive ? "running" : ""}`;
 
@@ -91,7 +92,7 @@ function MeditationTimer({
           </>
         )}
 
-        {timeLeft === 0 && <MeditationComplete setActivePage={setActivePage} />}
+        {timeLeft === 0 && <MeditationComplete />}
       </div>
     </div>
   );

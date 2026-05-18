@@ -2,20 +2,20 @@ import "./Home.css";
 import Welcome from "../../components/Welcome/Welcome.tsx";
 import WelcomeModal from "../../components/WelcomeModal/WelcomeModal.tsx";
 import Card from "../../components/Card/Card.tsx";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext.tsx";
 
 type HomeProps = {
   isName: string | null;
   setIsName: React.Dispatch<React.SetStateAction<string | null>>;
   setIsTransitioning: React.Dispatch<React.SetStateAction<boolean>>;
-  setActivePage: React.Dispatch<React.SetStateAction<string>>;
 };
 
-function Home({
-  isName,
-  setIsName,
-  setIsTransitioning,
-  setActivePage,
-}: HomeProps) {
+function Home({ isName, setIsName, setIsTransitioning }: HomeProps) {
+  const context = useContext(AppContext);
+  if (!context) return null;
+  const { setActivePage } = context;
+
   return (
     <>
       {!isName && (
