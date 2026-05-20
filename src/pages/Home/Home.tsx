@@ -17,7 +17,7 @@ function Home({ isName, setIsName, setIsTransitioning }: HomeProps) {
   const { setActivePage } = context;
 
   return (
-    <div className="page">
+    <>
       {!isName && (
         <WelcomeModal
           setIsName={setIsName}
@@ -25,7 +25,7 @@ function Home({ isName, setIsName, setIsTransitioning }: HomeProps) {
         />
       )}
       {isName && (
-        <>
+        <div className="page">
           <Welcome name={isName} />
 
           <div className="card-container flex-center">
@@ -50,9 +50,9 @@ function Home({ isName, setIsName, setIsTransitioning }: HomeProps) {
               onClick={() => setActivePage("explore")}
             />
           </div>
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 }
 

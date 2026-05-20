@@ -9,6 +9,7 @@ type WelcomeModalProps = {
 function WelcomeModal({ setIsName, setIsTransitioning }: WelcomeModalProps) {
   const name: string | null = localStorage.getItem("name");
   const [userName, setUserName] = useState<string>(name || "");
+  const [error, setError] = useState<string>("");
 
   function saveName(): void {
     localStorage.setItem("name", userName);
@@ -26,6 +27,12 @@ function WelcomeModal({ setIsName, setIsTransitioning }: WelcomeModalProps) {
 
   function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (!userName) {
+      setError("");
+      setTimeout(() => setError("Please enter your name"), 10);
+      return;
+    }
 
     withTransition(() => {
       saveName();
@@ -46,9 +53,12 @@ function WelcomeModal({ setIsName, setIsTransitioning }: WelcomeModalProps) {
       <div className="modal-content">
         <form className="welcome-modal" onSubmit={handleSubmit}>
           <input
+            className={error ? "input-error" : ""}
             type="text"
             placeholder="Enter your name"
-            onChange={(e) => setUserName(e.target.value)}
+            onChange={(e) => {
+              (setUserName(e.target.value), setError(""));
+            }}
             value={userName}
           />
           <button className="modal-main-btn">Enter</button>

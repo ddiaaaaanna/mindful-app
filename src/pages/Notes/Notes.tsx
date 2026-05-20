@@ -22,6 +22,7 @@ function Notes() {
 
   return (
     <div className="page notes-page flex-center">
+      {notes && <p className="description">Your notes</p>}
       <motion.div layout className="notes-container">
         {notes.length === 0 && <p className="description">No notes yet</p>}
 
