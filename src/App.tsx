@@ -8,6 +8,7 @@ import Home from "./pages/Home/Home.tsx";
 import { AppContext } from "./context/AppContext.tsx";
 import Navigation from "./components/Navigation/Navigation.tsx";
 import { AnimatePresence, motion } from "framer-motion";
+import Notes from "./pages/Notes/Notes.tsx";
 
 function App() {
   const name: string | null = localStorage.getItem("name");
@@ -54,6 +55,7 @@ function App() {
       {activePage === "meditate" && <Meditation emoji={"꩜"} />}
       {activePage === "reflect" && <Reflection />}
       {activePage === "explore" && <Exploration />}
+      {activePage === "notes" && <Notes />}
     </>
   );
 }

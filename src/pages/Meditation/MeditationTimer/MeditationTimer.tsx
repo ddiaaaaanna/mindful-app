@@ -13,7 +13,7 @@ function MeditationTimer({ meditationTimer }: MeditationTimerProps) {
 
   const context = useContext(AppContext);
   if (!context) return null;
-  const { setActivePage, timerActive, setTimerActive } = context;
+  const { timerActive, setTimerActive } = context;
 
   const containerClass = `timer-container ${hasStarted && timeLeft > 0 ? "border-glow" : ""} ${timerActive ? "running" : ""}`;
 

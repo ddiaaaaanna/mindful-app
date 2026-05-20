@@ -17,7 +17,11 @@ function MeditationComplete() {
       return;
     }
 
-    notes.push({ text: noteText, date: new Date().toLocaleDateString() });
+    notes.push({
+      text: noteText,
+      date: new Date().toLocaleDateString(),
+      id: Date.now(),
+    });
     setNoteSaved(true);
     setNoteText("");
 
@@ -50,6 +54,9 @@ function MeditationComplete() {
       {noteSaved && (
         <div className="note-success-container">
           <p className="description">Your note was saved.</p>
+          <button className="action-btn" onClick={() => setActivePage("notes")}>
+            view notes
+          </button>
           <button className="action-btn" onClick={() => setActivePage("")}>
             Home
           </button>

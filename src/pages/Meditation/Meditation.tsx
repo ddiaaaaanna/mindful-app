@@ -1,5 +1,4 @@
-import { useState, useContext } from "react";
-import { AppContext } from "../../context/AppContext.tsx";
+import { useState } from "react";
 import "./Meditation.css";
 import MeditationTimer from "../Meditation/MeditationTimer/MeditationTimer.tsx";
 
@@ -15,10 +14,6 @@ type Duration = {
 function Meditation({ emoji }: MeditationProps) {
   const [meditationTimer, setMeditationTimer] = useState<number>(0);
   const [meditationStep, setMeditationStep] = useState<string>("choose");
-
-  const context = useContext(AppContext);
-  if (!context) return null;
-  const { setActivePage } = context;
 
   const durations: Duration[] = [
     { label: "1 min", value: 60 },
