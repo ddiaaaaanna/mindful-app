@@ -7,6 +7,7 @@ import Transition from "./components/Transition/Transition.tsx";
 import Home from "./pages/Home/Home.tsx";
 import { AppContext } from "./context/AppContext.tsx";
 import Navigation from "./components/Navigation/Navigation.tsx";
+import { AnimatePresence, motion } from "framer-motion";
 
 function App() {
   const name: string | null = localStorage.getItem("name");
@@ -15,13 +16,32 @@ function App() {
 
   const context = useContext(AppContext);
   if (!context) return null;
-  const { activePage } = context;
+  const { activePage, timerActive } = context;
 
   return (
     <>
       {isTransitioning && <Transition />}
 
-      {isName && <Navigation />}
+      <AnimatePresence>
+        {isName && !timerActive && (
+          <motion.div
+            key="nav"
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              zIndex: 100,
+            }}
+            initial={{ y: "-100%", opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: "-100%", opacity: 0 }}
+            transition={{ duration: 0.7, ease: "easeInOut" }}
+          >
+            <Navigation />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {!activePage && (
         <Home

@@ -9,12 +9,11 @@ type MeditationTimerProps = {
 
 function MeditationTimer({ meditationTimer }: MeditationTimerProps) {
   const [timeLeft, setTimeLeft] = useState(meditationTimer);
-  const [timerActive, setTimerActive] = useState<boolean>(false);
   const [hasStarted, setHasStarted] = useState<boolean>(false);
 
   const context = useContext(AppContext);
   if (!context) return null;
-  const { setActivePage } = context;
+  const { setActivePage, timerActive, setTimerActive } = context;
 
   const containerClass = `timer-container ${hasStarted && timeLeft > 0 ? "border-glow" : ""} ${timerActive ? "running" : ""}`;
 
@@ -35,7 +34,7 @@ function MeditationTimer({ meditationTimer }: MeditationTimerProps) {
   }, [timerActive]);
 
   return (
-    <div className="page timer-page flex-center">
+    <div className="timer-page flex-center">
       <div className={containerClass}>
         {timeLeft > 0 && (
           <>
