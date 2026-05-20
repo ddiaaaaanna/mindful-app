@@ -29,12 +29,9 @@ function Meditation({ emoji }: MeditationProps) {
   return (
     <>
       {meditationStep === "choose" && (
-        <div className="meditation-page">
+        <div className="meditation-page page">
           <div className="meditation-header flex-center">
             <h1>MEDITATION</h1>
-            <button className="home-btn" onClick={() => setActivePage("")}>
-              Home
-            </button>
           </div>
 
           <div className="meditation-page-content">

@@ -51,7 +51,6 @@
 }
 
 .welcome-modal input::placeholder {
-  color: var(--text-input);
   font-size: 16px;
 }
 

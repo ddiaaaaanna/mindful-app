@@ -1,10 +1,11 @@
 import "./Exploration.css";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
-type ExplorationProps = {
-  setActivePage: (page: string) => void;
-};
-
-function Exploration({ setActivePage }: ExplorationProps) {
+function Exploration() {
+  const context = useContext(AppContext);
+  if (!context) return null;
+  const { setActivePage } = context;
   return (
     <>
       <h1>EXPLORATION</h1>

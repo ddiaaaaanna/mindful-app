@@ -1,10 +1,12 @@
 import "./Reflection.css";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
-type ReflectionProps = {
-  setActivePage: (page: string) => void;
-};
+function Reflection() {
+  const context = useContext(AppContext);
+  if (!context) return null;
+  const { setActivePage } = context;
 
-function Reflection({ setActivePage }: ReflectionProps) {
   return (
     <>
       <h1>REFLECTION</h1>

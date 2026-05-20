@@ -17,38 +17,42 @@ function Home({ isName, setIsName, setIsTransitioning }: HomeProps) {
   const { setActivePage } = context;
 
   return (
-    <>
+    <div className="page">
       {!isName && (
         <WelcomeModal
           setIsName={setIsName}
           setIsTransitioning={setIsTransitioning}
         />
       )}
-      {isName && <Welcome name={isName} />}
+      {isName && (
+        <>
+          <Welcome name={isName} />
 
-      <div className="card-container flex-center">
-        <Card
-          title={"Meditate"}
-          emoji={"꩜"}
-          description={
-            "Ground yourself in the present. Choose 1, 3, or 5 minutes of stillness."
-          }
-          onClick={() => setActivePage("meditate")}
-        />
-        <Card
-          title={"Reflect"}
-          emoji={"꥟"}
-          description={"Log your mood and see how you feel over time."}
-          onClick={() => setActivePage("reflect")}
-        />
-        <Card
-          title={"Explore"}
-          emoji={"❀"}
-          description={"Discover a new mindfulness quote each day."}
-          onClick={() => setActivePage("explore")}
-        />
-      </div>
-    </>
+          <div className="card-container flex-center">
+            <Card
+              title={"Meditate"}
+              emoji={"꩜"}
+              description={
+                "Ground yourself in the present. Choose 1, 3, or 5 minutes of stillness."
+              }
+              onClick={() => setActivePage("meditate")}
+            />
+            <Card
+              title={"Reflect"}
+              emoji={"꥟"}
+              description={"Log your mood and see how you feel over time."}
+              onClick={() => setActivePage("reflect")}
+            />
+            <Card
+              title={"Explore"}
+              emoji={"❀"}
+              description={"Discover a new mindfulness quote each day."}
+              onClick={() => setActivePage("explore")}
+            />
+          </div>
+        </>
+      )}
+    </div>
   );
 }
 

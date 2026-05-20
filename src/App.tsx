@@ -6,6 +6,7 @@ import Exploration from "./pages/Exploration/Exploration.tsx";
 import Transition from "./components/Transition/Transition.tsx";
 import Home from "./pages/Home/Home.tsx";
 import { AppContext } from "./context/AppContext.tsx";
+import Navigation from "./components/Navigation/Navigation.tsx";
 
 function App() {
   const name: string | null = localStorage.getItem("name");
@@ -14,11 +15,13 @@ function App() {
 
   const context = useContext(AppContext);
   if (!context) return null;
-  const { setActivePage, activePage } = context;
+  const { activePage } = context;
 
   return (
     <>
       {isTransitioning && <Transition />}
+
+      {isName && <Navigation />}
 
       {!activePage && (
         <Home
@@ -28,13 +31,9 @@ function App() {
         />
       )}
 
-      {activePage === "meditate" && (
-        <Meditation setActivePage={setActivePage} emoji={"꩜"} />
-      )}
-      {activePage === "reflect" && <Reflection setActivePage={setActivePage} />}
-      {activePage === "explore" && (
-        <Exploration setActivePage={setActivePage} />
-      )}
+      {activePage === "meditate" && <Meditation emoji={"꩜"} />}
+      {activePage === "reflect" && <Reflection />}
+      {activePage === "explore" && <Exploration />}
     </>
   );
 }

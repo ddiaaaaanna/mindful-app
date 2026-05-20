@@ -35,7 +35,7 @@ function MeditationTimer({ meditationTimer }: MeditationTimerProps) {
   }, [timerActive]);
 
   return (
-    <div className="timer-page flex-center">
+    <div className="page timer-page flex-center">
       <div className={containerClass}>
         {timeLeft > 0 && (
           <>

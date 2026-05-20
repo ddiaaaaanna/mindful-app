@@ -1,5 +1,4 @@
 .meditation-page {
-  height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -37,16 +36,6 @@
 
 .meditation-choice-btn:hover {
   background: var(--glass-bg-hover);
-}
-
-.home-btn {
-  background-color: transparent;
-  border: none;
-  color: var(--text-dark);
-}
-
-.home-btn:hover {
-  text-decoration: underline;
 }
 
 .meditation-card-description {
