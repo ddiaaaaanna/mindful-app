@@ -26,7 +26,6 @@ function MeditationTimer({
         setTimeLeft((prev) => {
           if (prev <= 1) {
             clearInterval(id);
-            setMeditationStep("complete");
             return 0;
           }
           return prev - 1;
@@ -36,6 +35,12 @@ function MeditationTimer({
       return () => clearInterval(id);
     }
   }, [timerActive]);
+
+  useEffect(() => {
+    if (timeLeft === 0) {
+      setMeditationStep("complete");
+    }
+  }, [timeLeft]);
 
   return (
     <div className="timer-page flex-center">

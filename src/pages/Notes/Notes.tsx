@@ -6,7 +6,7 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 
 type Note = {
   text: string;
-  date: number;
+  date: string;
   id: number;
   time: number;
 };
@@ -53,8 +53,8 @@ function Notes() {
           </div>
         )}
 
-        <AnimatePresence mode="popLayout">
-          <div className="notes-list">
+        <div className="notes-list">
+          <AnimatePresence mode="popLayout">
             {visibleNotes.map((note: Note) => (
               <motion.div
                 key={note.id}
@@ -88,32 +88,32 @@ function Notes() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </AnimatePresence>
+        </div>
 
-          {notes.length > 0 && (
-            <div className="pagination-btn-container">
-              <button
-                className={currentPage === 1 ? "unavailable" : ""}
-                onClick={prevPage}
-              >
-                <MdKeyboardArrowLeft />
-              </button>
-              <div className="page-amount-container">
-                {pageAmount.map((_, index) => (
-                  <span key={`page-dot-${index}`} className="page-dot">
-                    {index + 1 === currentPage ? "●" : "○"}
-                  </span>
-                ))}
-              </div>
-              <button
-                className={currentPage === totalPages ? "unavailable" : ""}
-                onClick={nextPage}
-              >
-                <MdKeyboardArrowRight />
-              </button>
+        {notes.length > 0 && (
+          <div className="pagination-btn-container">
+            <button
+              className={currentPage === 1 ? "unavailable" : ""}
+              onClick={prevPage}
+            >
+              <MdKeyboardArrowLeft />
+            </button>
+            <div className="page-amount-container">
+              {pageAmount.map((_, index) => (
+                <span key={`page-dot-${index}`} className="page-dot">
+                  {index + 1 === currentPage ? "●" : "○"}
+                </span>
+              ))}
             </div>
-          )}
-        </AnimatePresence>
+            <button
+              className={currentPage === totalPages ? "unavailable" : ""}
+              onClick={nextPage}
+            >
+              <MdKeyboardArrowRight />
+            </button>
+          </div>
+        )}
       </motion.div>
     </div>
   );

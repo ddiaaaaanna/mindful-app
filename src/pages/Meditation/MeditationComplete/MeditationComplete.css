@@ -32,10 +32,6 @@
   margin: 20px 0;
 }
 
-.note-success-container > .description {
-  animation: fadeIn 1s ease;
-}
-
 .completion-panel {
   display: flex;
   justify-content: center;
