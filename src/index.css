@@ -6,6 +6,7 @@
   --text-title: rgba(235, 248, 241, 0.671);
   --text-dark: rgba(71, 71, 71, 0.938);
   --text-main: rgba(135, 135, 135, 0.711);
+  --text-action-btn: rgba(135, 135, 135, 0.9);
   --text-input: rgba(45, 45, 45, 0.782);
   --border-radius: 8px;
   --border-radius-sm: 6px;
@@ -86,4 +87,23 @@ button {
 .page {
   padding-top: 60px;
   animation: fadeIn 0.4s ease;
+}
+
+.unavailable {
+  visibility: hidden;
+}
+
+.input-error {
+  animation: shake 0.6s ease;
+  box-shadow: 0 0 20px rgb(108, 194, 227) !important;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
 }

@@ -8,6 +8,7 @@
 .notes-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   height: fit-content;
   width: 450px;
   height: 330px;
@@ -46,9 +47,10 @@
   margin: 0;
 }
 
-.note-date {
+.note-details {
   font-size: 12px;
   color: var(--text-main);
+  margin: 0;
 }
 
 .note-topic {
@@ -66,6 +68,8 @@
 .pagination-btn-container > button {
   border: none;
   background: transparent;
+  padding: 0;
+  color: var(--text-action-btn);
 }
 
 .empty-state {
@@ -76,9 +80,16 @@
 .page-amount-container {
   display: flex;
   gap: 5px;
+  margin: 0 auto;
 }
 
 .page-dot {
-  font-size: 12px;
-  color: var(--text-dark);
+  font-size: 10px;
+  color: var(--text-action-btn);
+}
+
+.session-details {
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }

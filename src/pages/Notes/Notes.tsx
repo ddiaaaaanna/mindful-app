@@ -8,6 +8,7 @@ type Note = {
   text: string;
   date: number;
   id: number;
+  time: number;
 };
 
 function Notes() {
@@ -22,7 +23,6 @@ function Notes() {
   const totalPages = Math.ceil(notes.length / notesPerPage);
 
   const pageAmount = Array(totalPages).fill(1);
-  console.log(pageAmount);
 
   function nextPage() {
     if (currentPage < totalPages) {
@@ -54,47 +54,61 @@ function Notes() {
         )}
 
         <AnimatePresence mode="popLayout">
-          {visibleNotes.map((note: Note) => (
-            <motion.div
-              key={note.id}
-              layout
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{
-                opacity: { duration: 0.25 },
-                layout: { duration: 0.3 },
-              }}
-            >
-              <div className="note-content">
-                <div className="note-text">
-                  <p className="note-topic">{note.text}</p>
-                  <p className="note-date">{note.date}</p>
-                </div>
+          <div className="notes-list">
+            {visibleNotes.map((note: Note) => (
+              <motion.div
+                key={note.id}
+                layout
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{
+                  opacity: { duration: 0.25 },
+                  layout: { duration: 0.3 },
+                }}
+              >
+                <div className="note-content">
+                  <div className="note-text">
+                    <p className="note-topic">{note.text}</p>
+                    <div className="session-details">
+                      <p className="note-details">{note.date}</p>
+                      <span className="note-details">•</span>
+                      <p className="note-details">{note.time / 60 + "min"}</p>
+                    </div>
+                  </div>
 
-                <div className="note-action">
-                  <button
-                    className="note-del-btn"
-                    onClick={() => removeNote(note.id)}
-                  >
-                    x
-                  </button>
+                  <div className="note-action">
+                    <button
+                      className="note-del-btn"
+                      onClick={() => removeNote(note.id)}
+                    >
+                      x
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
 
           {notes.length > 0 && (
             <div className="pagination-btn-container">
-              <button onClick={prevPage}>
+              <button
+                className={currentPage === 1 ? "unavailable" : ""}
+                onClick={prevPage}
+              >
                 <MdKeyboardArrowLeft />
               </button>
               <div className="page-amount-container">
-                {pageAmount.map(() => (
-                  <span className="page-dot">○</span>
+                {pageAmount.map((_, index) => (
+                  <span key={`page-dot-${index}`} className="page-dot">
+                    {index + 1 === currentPage ? "●" : "○"}
+                  </span>
                 ))}
               </div>
-              <button onClick={nextPage}>
+              <button
+                className={currentPage === totalPages ? "unavailable" : ""}
+                onClick={nextPage}
+              >
                 <MdKeyboardArrowRight />
               </button>
             </div>

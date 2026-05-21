@@ -5,11 +5,16 @@ import Notes from "../../Notes/Notes";
 
 type MeditationCompleteType = {
   setMeditationStep: React.Dispatch<React.SetStateAction<string>>;
+  meditationTimer: number;
 };
 
-function MeditationComplete({ setMeditationStep }: MeditationCompleteType) {
+function MeditationComplete({
+  setMeditationStep,
+  meditationTimer,
+}: MeditationCompleteType) {
   const [noteText, setNoteText] = useState<string>("");
   const [noteSaved, setNoteSaved] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   const context = useContext(AppContext);
   if (!context) return null;
@@ -19,6 +24,8 @@ function MeditationComplete({ setMeditationStep }: MeditationCompleteType) {
     const notes = JSON.parse(localStorage.getItem("notes") ?? "[]");
 
     if (!noteText) {
+      setError("");
+      setTimeout(() => setError("Please enter a note"), 10);
       return;
     }
 
@@ -26,6 +33,7 @@ function MeditationComplete({ setMeditationStep }: MeditationCompleteType) {
       text: noteText,
       date: new Date().toLocaleDateString(),
       id: Date.now(),
+      time: meditationTimer,
     });
     setNoteSaved(true);
     setNoteText("");
@@ -42,9 +50,12 @@ function MeditationComplete({ setMeditationStep }: MeditationCompleteType) {
           </p>
           <div className="note-container">
             <textarea
-              className="note-txtarea"
+              name="note"
+              className={`note-txtarea ${error ? "input-error" : ""}`}
               placeholder="Reflect on how you felt during this session..."
-              onChange={(e) => setNoteText(e.target.value)}
+              onChange={(e) => {
+                (setNoteText(e.target.value), setError(""));
+              }}
               value={noteText}
             ></textarea>
             <div className="btn-container flex-center">

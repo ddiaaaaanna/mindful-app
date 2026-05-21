@@ -67,7 +67,10 @@ function Meditation({ emoji }: MeditationProps) {
       )}
 
       {meditationStep === "complete" && (
-        <MeditationComplete setMeditationStep={setMeditationStep} />
+        <MeditationComplete
+          setMeditationStep={setMeditationStep}
+          meditationTimer={meditationTimer}
+        />
       )}
     </>
   );
