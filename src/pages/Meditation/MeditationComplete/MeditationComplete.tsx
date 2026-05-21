@@ -1,8 +1,13 @@
 import { useState, useContext } from "react";
 import "./MeditationComplete.css";
 import { AppContext } from "../../../context/AppContext";
+import Notes from "../../Notes/Notes";
 
-function MeditationComplete() {
+type MeditationCompleteType = {
+  setMeditationStep: React.Dispatch<React.SetStateAction<string>>;
+};
+
+function MeditationComplete({ setMeditationStep }: MeditationCompleteType) {
   const [noteText, setNoteText] = useState<string>("");
   const [noteSaved, setNoteSaved] = useState<boolean>(false);
 
@@ -29,9 +34,9 @@ function MeditationComplete() {
   }
 
   return (
-    <div className="completion-container">
+    <div className="completion-container flex-center">
       {!noteSaved && (
-        <>
+        <div className="completion-content">
           <p className="description">
             Amazing! Take a moment to notice how you feel.
           </p>
@@ -48,18 +53,30 @@ function MeditationComplete() {
               </button>
               <button className="action-btn">Journal History</button>
             </div>
-          </div>{" "}
-        </>
+          </div>
+        </div>
       )}
+
       {noteSaved && (
-        <div className="note-success-container">
-          <p className="description">Your note was saved.</p>
-          <button className="action-btn" onClick={() => setActivePage("notes")}>
-            view notes
-          </button>
-          <button className="action-btn" onClick={() => setActivePage("")}>
-            Home
-          </button>
+        <div className="completion-panel">
+          <div className="completion-content">
+            <p className="description">Your note was saved.</p>
+            <div className="btn-container">
+              <button
+                className="action-btn"
+                onClick={() => setMeditationStep("choose")}
+              >
+                Start over
+              </button>
+              <button className="action-btn" onClick={() => setActivePage("")}>
+                Home
+              </button>
+            </div>
+          </div>
+
+          <div className="notes-history-container">
+            <Notes />
+          </div>
         </div>
       )}
     </div>

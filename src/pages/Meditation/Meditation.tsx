@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Meditation.css";
 import MeditationTimer from "../Meditation/MeditationTimer/MeditationTimer.tsx";
+import MeditationComplete from "./MeditationComplete/MeditationComplete.tsx";
 
 type MeditationProps = {
   emoji: string;
@@ -59,7 +60,14 @@ function Meditation({ emoji }: MeditationProps) {
         </div>
       )}
       {meditationStep === "timer" && (
-        <MeditationTimer meditationTimer={meditationTimer} />
+        <MeditationTimer
+          meditationTimer={meditationTimer}
+          setMeditationStep={setMeditationStep}
+        />
+      )}
+
+      {meditationStep === "complete" && (
+        <MeditationComplete setMeditationStep={setMeditationStep} />
       )}
     </>
   );

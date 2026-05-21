@@ -1,13 +1,16 @@
-import MeditationComplete from "../MeditationComplete/MeditationComplete";
 import "./MeditationTimer.css";
 import { useEffect, useState, useContext } from "react";
 import { AppContext } from "../../../context/AppContext";
 
 type MeditationTimerProps = {
   meditationTimer: number;
+  setMeditationStep: React.Dispatch<React.SetStateAction<string>>;
 };
 
-function MeditationTimer({ meditationTimer }: MeditationTimerProps) {
+function MeditationTimer({
+  meditationTimer,
+  setMeditationStep,
+}: MeditationTimerProps) {
   const [timeLeft, setTimeLeft] = useState(meditationTimer);
   const [hasStarted, setHasStarted] = useState<boolean>(false);
 
@@ -23,6 +26,7 @@ function MeditationTimer({ meditationTimer }: MeditationTimerProps) {
         setTimeLeft((prev) => {
           if (prev <= 1) {
             clearInterval(id);
+            setMeditationStep("complete");
             return 0;
           }
           return prev - 1;
@@ -80,6 +84,7 @@ function MeditationTimer({ meditationTimer }: MeditationTimerProps) {
                     onClick={() => {
                       setTimeLeft(0);
                       setTimerActive(false);
+                      setMeditationStep("complete");
                     }}
                   >
                     End session
@@ -90,8 +95,6 @@ function MeditationTimer({ meditationTimer }: MeditationTimerProps) {
             <p className="flex-center card-emoji">{timeLeft}</p>
           </>
         )}
-
-        {timeLeft === 0 && <MeditationComplete />}
       </div>
     </div>
   );

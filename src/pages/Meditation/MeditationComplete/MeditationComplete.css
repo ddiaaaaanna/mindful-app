@@ -1,3 +1,12 @@
+.completion-container {
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease;
+  background: rgba(0, 0, 0, 0.1);
+}
+
 .note-txtarea {
   background-color: transparent;
   border-radius: var(--border-radius-sm);
@@ -23,10 +32,25 @@
   margin: 20px 0;
 }
 
-.completion-container {
+.note-success-container > .description {
   animation: fadeIn 1s ease;
 }
 
-.note-success-container > .description {
+.completion-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.completion-content {
+  height: fit-content;
+  width: 450px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: var(--card-shadow-md);
+  border: var(--glass-border);
+  border-radius: var(--border-radius);
+  padding: 20px;
   animation: fadeIn 1s ease;
 }
