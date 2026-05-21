@@ -39,6 +39,7 @@ function MeditationTimer({
   useEffect(() => {
     if (timeLeft === 0) {
       setMeditationStep("complete");
+      setTimerActive(false);
     }
   }, [timeLeft]);
 
