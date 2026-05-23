@@ -2,3 +2,8 @@
   margin-top: 50px;
   gap: 40px;
 }
+
+.welcome-page {
+  animation: fadeIn 0.5s ease;
+  padding-top: 70px;
+}

@@ -1,0 +1,23 @@
+.page-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease;
+}
+
+.page-content {
+  height: fit-content;
+  width: 450px;
+  margin: 0 auto;
+  backdrop-filter: blur(90px);
+  box-shadow: var(--card-shadow);
+  border: var(--glass-border);
+  border-radius: var(--border-radius);
+  padding: 20px;
+}
+
+.page-header {
+  padding: 20px;
+}

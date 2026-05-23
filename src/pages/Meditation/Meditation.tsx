@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Meditation.css";
 import MeditationTimer from "../Meditation/MeditationTimer/MeditationTimer.tsx";
 import MeditationComplete from "./MeditationComplete/MeditationComplete.tsx";
+import Page from "../../components/Page/Page.tsx";
 
 type MeditationProps = {
   emoji: string;
@@ -25,15 +26,11 @@ function Meditation({ emoji }: MeditationProps) {
   return (
     <>
       {meditationStep === "choose" && (
-        <div className="meditation-page page">
-          <div className="meditation-header flex-center">
-            <h1>MEDITATION</h1>
-          </div>
-
-          <div className="meditation-page-content">
-            <p className="meditation-card-description">
-              Choose the duration of your practice
-            </p>
+        <>
+          <Page
+            title="MEDITATION"
+            description="Choose the duration of your practice"
+          >
             <div className="choice-btn-container flex-center">
               {durations.map((duration) => (
                 <button
@@ -46,18 +43,18 @@ function Meditation({ emoji }: MeditationProps) {
               ))}
             </div>
 
-            <p className="flex-center card-emoji">{emoji}</p>
+            <p className="flex-center emoji-animation">{emoji}</p>
 
             {meditationTimer > 0 && (
               <button
-                className="action-btn"
+                className="action-btn begin-btn"
                 onClick={() => setMeditationStep("timer")}
               >
                 Begin
               </button>
             )}
-          </div>
-        </div>
+          </Page>
+        </>
       )}
       {meditationStep === "timer" && (
         <MeditationTimer

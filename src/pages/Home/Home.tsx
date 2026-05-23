@@ -25,7 +25,7 @@ function Home({ isName, setIsName, setIsTransitioning }: HomeProps) {
         />
       )}
       {isName && (
-        <div className="page">
+        <div className="welcome-page">
           <Welcome name={isName} />
 
           <div className="card-container flex-center">
