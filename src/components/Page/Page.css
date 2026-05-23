@@ -1,11 +1,10 @@
 .page-container {
-  min-height: calc(100vh - 77px);
-  transform: translateY(-40px);
+  min-height: 100vh;
+  transform: translateY(-20px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   animation: fadeIn 0.5s ease;
-  padding-top: 80px;
 }
 
 .page-content {
