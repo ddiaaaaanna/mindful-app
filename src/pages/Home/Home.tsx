@@ -40,7 +40,7 @@ function Home({ isName, setIsName, setIsTransitioning }: HomeProps) {
             <Card
               title={"Reflect"}
               emoji={"꥟"}
-              description={"Log your mood and see how you feel over time."}
+              description={"Take a moment to reflect with guided prompts."}
               onClick={() => setActivePage("reflect")}
             />
             <Card
