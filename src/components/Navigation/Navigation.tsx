@@ -21,8 +21,8 @@ function Navigation() {
         </li>
 
         <li>
-          <button className="nav-item" onClick={() => setActivePage("notes")}>
-            notes
+          <button className="nav-item" onClick={() => setActivePage("journal")}>
+            journal
           </button>
         </li>
 
