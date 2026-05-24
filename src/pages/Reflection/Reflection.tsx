@@ -1,6 +1,6 @@
 import "./Reflection.css";
-import { useContext, useState } from "react";
-import { AppContext } from "../../context/AppContext";
+import { useState } from "react";
+
 import Page from "../../components/Page/Page";
 
 type PromptType = {
@@ -33,6 +33,8 @@ function Reflection() {
   ]);
 
   const [error, setError] = useState<string>("");
+
+  console.log(error);
 
   function saveEntry(): void {
     const journalEntry = JSON.parse(
