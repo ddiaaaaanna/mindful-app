@@ -1,9 +1,13 @@
 import "./Reflection.css";
 import { useState } from "react";
+import { TbCheckbox } from "react-icons/tb";
 import { MdOutlineEdit } from "react-icons/md";
+import { IoIosArrowRoundBack } from "react-icons/io";
+
 import Page from "../../components/Page/Page";
 
 type PromptType = {
+  originalPrompt: string;
   text: string;
   isEdited: boolean;
   promptId: number;
@@ -13,18 +17,21 @@ type PromptType = {
 function Reflection() {
   const [prompts, setPrompts] = useState<PromptType[]>([
     {
+      originalPrompt: "What emotion feels most present for you today?",
       text: "What emotion feels most present for you today?",
       isEdited: false,
       promptId: 1,
       answer: "",
     },
     {
+      originalPrompt: "What has been draining your energy lately?",
       text: "What has been draining your energy lately?",
       isEdited: false,
       promptId: 2,
       answer: "",
     },
     {
+      originalPrompt: "What is something small you appreciated today?",
       text: "What is something small you appreciated today?",
       isEdited: false,
       promptId: 3,
@@ -59,15 +66,33 @@ function Reflection() {
     setPrompts(prompts.map((prompt) => ({ ...prompt, answer: "" })));
   }
 
-  // const context = useContext(AppContext);
-  // if (!context) return null;
-  // const { setActivePage } = context;
-
   function handlePromptChange(index: number, value: string) {
     setPrompts(
       prompts.map((prompt, i) => {
         if (i === index) {
           return { ...prompt, answer: value };
+        }
+        return prompt;
+      }),
+    );
+  }
+
+  function togglePromptEdit(index: number) {
+    setPrompts(
+      prompts.map((prompt, i) => {
+        if (i === index) {
+          return { ...prompt, isEdited: !prompt.isEdited, text: prompt.text };
+        }
+        return prompt;
+      }),
+    );
+  }
+
+  function editPrompt(index: number, value: string) {
+    setPrompts(
+      prompts.map((prompt, i) => {
+        if (i === index) {
+          return { ...prompt, text: value };
         }
         return prompt;
       }),
@@ -86,10 +111,37 @@ function Reflection() {
           {prompts.map((prompt, index) => (
             <div key={index}>
               <div className="prompt-controls">
-                <span className="prompt-description">{prompt.text}</span>
-                <button className="prompt-edit-btn">
-                  <MdOutlineEdit />
-                </button>
+                {!prompt.isEdited ? (
+                  <>
+                    <span className="prompt-description">{prompt.text}</span>
+                    <button
+                      className="prompt-edit-btn"
+                      onClick={() => togglePromptEdit(index)}
+                    >
+                      <MdOutlineEdit />
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <input
+                      autoFocus
+                      className="prompt-editor"
+                      value={prompt.text}
+                      onChange={(e) => editPrompt(index, e.target.value)}
+                    />
+                    <div className="flex-center">
+                      <button className="prompt-edit-btn">
+                        <TbCheckbox />
+                      </button>
+                      <button
+                        className="prompt-edit-btn"
+                        onClick={() => togglePromptEdit(index)}
+                      >
+                        <IoIosArrowRoundBack />
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
 
               <textarea

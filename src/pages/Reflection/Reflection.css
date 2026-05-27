@@ -16,6 +16,7 @@
 .prompt-description {
   color: var(--text-dark);
   font-size: 14px;
+  animation: fadeIn 0.4s ease-in;
 }
 
 .prompt-txtarea {
@@ -50,4 +51,16 @@
   color: var(--text-dark);
   border: none;
   font-size: 16px;
+}
+
+.prompt-editor {
+  border-radius: var(--border-radius-sm);
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  width: 100%;
+  padding: 5px;
+  font-family: inherit;
+  color: var(--text-input);
+  font-size: 12px;
+  animation: fadeIn 0.4s ease-in;
 }
