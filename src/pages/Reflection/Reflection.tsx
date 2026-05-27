@@ -1,6 +1,6 @@
 import "./Reflection.css";
 import { useState } from "react";
-
+import { MdOutlineEdit } from "react-icons/md";
 import Page from "../../components/Page/Page";
 
 type PromptType = {
@@ -79,11 +79,19 @@ function Reflection() {
       <Page
         title="REFLECT"
         description="Explore your thoughts through guided reflection"
+        animation="☀"
       >
+        {/* <div className="sun-decoration">☀</div> */}
         <div className="prompt-container">
           {prompts.map((prompt, index) => (
             <div key={index}>
-              <span className="prompt-description">{prompt.text}</span>
+              <div className="prompt-controls">
+                <span className="prompt-description">{prompt.text}</span>
+                <button className="prompt-edit-btn">
+                  <MdOutlineEdit />
+                </button>
+              </div>
+
               <textarea
                 className="prompt-txtarea"
                 onChange={(e) => {
