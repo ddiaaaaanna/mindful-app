@@ -36,7 +36,7 @@
   opacity: 0.1;
   pointer-events: none;
   z-index: -1;
-  animation: rotate 120s linear infinite;
+  animation: rotate 150s linear infinite;
   display: block;
 }
 

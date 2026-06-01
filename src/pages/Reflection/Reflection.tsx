@@ -15,33 +15,40 @@ type PromptType = {
 };
 
 function Reflection() {
-  const [prompts, setPrompts] = useState<PromptType[]>([
-    {
-      originalPrompt: "What emotion feels most present for you today?",
-      text: "What emotion feels most present for you today?",
-      isEdited: false,
-      promptId: 1,
-      answer: "",
-    },
-    {
-      originalPrompt: "What has been draining your energy lately?",
-      text: "What has been draining your energy lately?",
-      isEdited: false,
-      promptId: 2,
-      answer: "",
-    },
-    {
-      originalPrompt: "What is something small you appreciated today?",
-      text: "What is something small you appreciated today?",
-      isEdited: false,
-      promptId: 3,
-      answer: "",
-    },
-  ]);
+  const [prompts, setPrompts] = useState<PromptType[]>(() => {
+    const customPrompts = localStorage.getItem("customPrompt");
+
+    if (customPrompts) {
+      const editedPrompts = JSON.parse(customPrompts);
+      return editedPrompts;
+    } else {
+      return [
+        {
+          originalPrompt: "What emotion feels most present for you today?",
+          text: "What emotion feels most present for you today?",
+          isEdited: false,
+          promptId: 1,
+          answer: "",
+        },
+        {
+          originalPrompt: "What has been draining your energy lately?",
+          text: "What has been draining your energy lately?",
+          isEdited: false,
+          promptId: 2,
+          answer: "",
+        },
+        {
+          originalPrompt: "What is something small you appreciated today?",
+          text: "What is something small you appreciated today?",
+          isEdited: false,
+          promptId: 3,
+          answer: "",
+        },
+      ];
+    }
+  });
 
   const [error, setError] = useState<string>("");
-
-  console.log(error);
 
   function saveEntry(): void {
     const journalEntry = JSON.parse(
@@ -50,7 +57,7 @@ function Reflection() {
 
     if (!prompts.some((prompt) => prompt.answer !== "")) {
       setError("");
-      setTimeout(() => setError("Please enter a an entry"), 10);
+      setTimeout(() => setError("Please enter an entry"), 10);
       return;
     }
 
@@ -99,6 +106,19 @@ function Reflection() {
     );
   }
 
+  function customizePrompts(): void {
+    localStorage.setItem(
+      "customPrompt",
+      JSON.stringify(
+        prompts.map((prompt) => ({
+          text: prompt.text,
+          originalPrompt: prompt.originalPrompt,
+          promptId: prompt.promptId,
+        })),
+      ),
+    );
+  }
+
   return (
     <div className="reflect-page">
       <Page
@@ -130,13 +150,15 @@ function Reflection() {
                       onChange={(e) => editPrompt(index, e.target.value)}
                     />
                     <div className="flex-center">
-                      <button className="prompt-edit-btn">
-                        <TbCheckbox />
-                      </button>
                       <button
                         className="prompt-edit-btn"
-                        onClick={() => togglePromptEdit(index)}
+                        onClick={() => {
+                          (customizePrompts(), togglePromptEdit(index));
+                        }}
                       >
+                        <TbCheckbox />
+                      </button>
+                      <button className="prompt-edit-btn">
                         <IoIosArrowRoundBack />
                       </button>
                     </div>
@@ -145,7 +167,7 @@ function Reflection() {
               </div>
 
               <textarea
-                className="prompt-txtarea"
+                className={`prompt-txtarea ${error ? "input-error" : ""}`}
                 onChange={(e) => {
                   (handlePromptChange(index, e.target.value), setError(""));
                 }}

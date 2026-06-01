@@ -53,6 +53,11 @@
   font-size: 16px;
 }
 
+.prompt-edit-btn:hover {
+  color: var(--text-main);
+  text-shadow: var(--text-shadow);
+}
+
 .prompt-editor {
   border-radius: var(--border-radius-sm);
   background: var(--glass-bg);
