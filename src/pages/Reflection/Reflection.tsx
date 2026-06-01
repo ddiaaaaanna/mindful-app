@@ -12,6 +12,7 @@ type PromptType = {
   isEdited: boolean;
   promptId: number;
   answer: string;
+  currentPrompt: string;
 };
 
 function Reflection() {
@@ -29,6 +30,7 @@ function Reflection() {
           isEdited: false,
           promptId: 1,
           answer: "",
+          currentPrompt: "",
         },
         {
           originalPrompt: "What has been draining your energy lately?",
@@ -36,6 +38,7 @@ function Reflection() {
           isEdited: false,
           promptId: 2,
           answer: "",
+          currentPrompt: "",
         },
         {
           originalPrompt: "What is something small you appreciated today?",
@@ -43,6 +46,7 @@ function Reflection() {
           isEdited: false,
           promptId: 3,
           answer: "",
+          currentPrompt: "",
         },
       ];
     }
@@ -88,7 +92,13 @@ function Reflection() {
     setPrompts(
       prompts.map((prompt, i) => {
         if (i === index) {
-          return { ...prompt, isEdited: !prompt.isEdited, text: prompt.text };
+          return {
+            ...prompt,
+            isEdited: !prompt.isEdited,
+            currentPrompt: !prompt.isEdited
+              ? prompt.text
+              : prompt.currentPrompt,
+          };
         }
         return prompt;
       }),
@@ -100,6 +110,17 @@ function Reflection() {
       prompts.map((prompt, i) => {
         if (i === index) {
           return { ...prompt, text: value };
+        }
+        return prompt;
+      }),
+    );
+  }
+
+  function cancelPrompt(index: number) {
+    setPrompts(
+      prompts.map((prompt, i) => {
+        if (i === index) {
+          return { ...prompt, isEdited: false, text: prompt.currentPrompt };
         }
         return prompt;
       }),
@@ -158,7 +179,10 @@ function Reflection() {
                       >
                         <TbCheckbox />
                       </button>
-                      <button className="prompt-edit-btn">
+                      <button
+                        className="prompt-edit-btn"
+                        onClick={() => cancelPrompt(index)}
+                      >
                         <IoIosArrowRoundBack />
                       </button>
                     </div>
