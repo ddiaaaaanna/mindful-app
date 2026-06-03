@@ -64,8 +64,6 @@ function Reflection() {
       localStorage.getItem("journalEntry") ?? "[]",
     );
 
-    console.log(prompts);
-
     if (!prompts.some((prompt) => prompt.answer !== "")) {
       setError("");
       setTimeout(() => setError("Please enter an entry"), 10);
@@ -225,7 +223,7 @@ function Reflection() {
               <div className="btn-container">
                 <button
                   className="action-btn"
-                  onClick={() => setActivePage("reflect")}
+                  onClick={() => setLogJournal(false)}
                 >
                   Journal again
                 </button>

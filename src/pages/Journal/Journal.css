@@ -1,0 +1,21 @@
+.journal-content {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.journal-container {
+  flex-direction: column;
+  min-height: 100vh;
+  transform: translateY(-20px);
+}
+
+.journal-title {
+  position: fixed;
+  top: 20%;
+  opacity: 0.3;
+  left: 5%;
+  font-size: 25rem;
+}

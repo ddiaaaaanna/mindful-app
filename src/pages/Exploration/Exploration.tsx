@@ -1,6 +1,7 @@
 import "./Exploration.css";
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
+import Page from "../../components/Page/Page";
 
 function Exploration() {
   const context = useContext(AppContext);
@@ -8,8 +9,7 @@ function Exploration() {
   const { setActivePage } = context;
   return (
     <>
-      <h1>EXPLORATION</h1>
-      <button onClick={() => setActivePage("")}>Home</button>
+      <Page title="EXPLORE" description="Thought of the day"></Page>
     </>
   );
 }
