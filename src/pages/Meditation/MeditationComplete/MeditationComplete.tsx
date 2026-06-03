@@ -62,7 +62,12 @@ function MeditationComplete({
               <button className="action-btn" onClick={() => saveNote()}>
                 Save note
               </button>
-              <button className="action-btn">Journal History</button>
+              <button
+                className="action-btn"
+                onClick={() => setActivePage("journal")}
+              >
+                Journal History
+              </button>
             </div>
           </div>
         </div>

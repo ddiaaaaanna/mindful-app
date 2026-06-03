@@ -1,9 +1,9 @@
 import "./Reflection.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { TbCheckbox } from "react-icons/tb";
 import { MdOutlineEdit } from "react-icons/md";
 import { IoIosArrowRoundBack } from "react-icons/io";
-
+import { AppContext } from "../../context/AppContext";
 import Page from "../../components/Page/Page";
 
 type PromptType = {
@@ -52,12 +52,19 @@ function Reflection() {
     }
   });
 
+  const context = useContext(AppContext);
+  if (!context) return null;
+  const { setActivePage } = context;
+
+  const [logJournal, setLogJournal] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
   function saveEntry(): void {
     const journalEntry = JSON.parse(
       localStorage.getItem("journalEntry") ?? "[]",
     );
+
+    console.log(prompts);
 
     if (!prompts.some((prompt) => prompt.answer !== "")) {
       setError("");
@@ -75,6 +82,7 @@ function Reflection() {
 
     localStorage.setItem("journalEntry", JSON.stringify(journalEntry));
     setPrompts(prompts.map((prompt) => ({ ...prompt, answer: "" })));
+    setLogJournal(true);
   }
 
   function handlePromptChange(index: number, value: string) {
@@ -135,6 +143,9 @@ function Reflection() {
           text: prompt.text,
           originalPrompt: prompt.originalPrompt,
           promptId: prompt.promptId,
+          answer: "",
+          currentPrompt: "",
+          isEdited: false,
         })),
       ),
     );
@@ -142,68 +153,93 @@ function Reflection() {
 
   return (
     <div className="reflect-page">
-      <Page
-        title="REFLECT"
-        description="Explore your thoughts through guided reflection"
-        animation="☀"
-      >
-        {/* <div className="sun-decoration">☀</div> */}
-        <div className="prompt-container">
-          {prompts.map((prompt, index) => (
-            <div key={index}>
-              <div className="prompt-controls">
-                {!prompt.isEdited ? (
-                  <>
-                    <span className="prompt-description">{prompt.text}</span>
-                    <button
-                      className="prompt-edit-btn"
-                      onClick={() => togglePromptEdit(index)}
-                    >
-                      <MdOutlineEdit />
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <input
-                      autoFocus
-                      className="prompt-editor"
-                      value={prompt.text}
-                      onChange={(e) => editPrompt(index, e.target.value)}
-                    />
-                    <div className="flex-center">
+      {!logJournal && (
+        <Page
+          title="REFLECT"
+          description="Explore your thoughts through guided reflection"
+          animation="☀"
+        >
+          <div className="prompt-container">
+            {prompts.map((prompt, index) => (
+              <div key={index}>
+                <div className="prompt-controls">
+                  {!prompt.isEdited ? (
+                    <>
+                      <span className="prompt-description">{prompt.text}</span>
                       <button
                         className="prompt-edit-btn"
-                        onClick={() => {
-                          (customizePrompts(), togglePromptEdit(index));
-                        }}
+                        onClick={() => togglePromptEdit(index)}
                       >
-                        <TbCheckbox />
+                        <MdOutlineEdit />
                       </button>
-                      <button
-                        className="prompt-edit-btn"
-                        onClick={() => cancelPrompt(index)}
-                      >
-                        <IoIosArrowRoundBack />
-                      </button>
-                    </div>
-                  </>
-                )}
-              </div>
+                    </>
+                  ) : (
+                    <>
+                      <input
+                        autoFocus
+                        className="prompt-editor"
+                        value={prompt.text}
+                        onChange={(e) => editPrompt(index, e.target.value)}
+                      />
+                      <div className="flex-center">
+                        <button
+                          className="prompt-edit-btn"
+                          onClick={() => {
+                            (customizePrompts(), togglePromptEdit(index));
+                          }}
+                        >
+                          <TbCheckbox />
+                        </button>
+                        <button
+                          className="prompt-edit-btn"
+                          onClick={() => cancelPrompt(index)}
+                        >
+                          <IoIosArrowRoundBack />
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </div>
 
-              <textarea
-                className={`prompt-txtarea ${error ? "input-error" : ""}`}
-                onChange={(e) => {
-                  (handlePromptChange(index, e.target.value), setError(""));
-                }}
-                value={prompt.answer}
-              ></textarea>
+                <textarea
+                  className={`prompt-txtarea ${error ? "input-error" : ""}`}
+                  onChange={(e) => {
+                    (handlePromptChange(index, e.target.value), setError(""));
+                  }}
+                  value={prompt.answer}
+                ></textarea>
+              </div>
+            ))}
+          </div>
+          <button className="action-btn" onClick={() => saveEntry()}>
+            Log to journal
+          </button>
+        </Page>
+      )}
+
+      {logJournal && (
+        <Page animation="☀">
+          <div className="completion-panel">
+            <div className="">
+              <p className="description">Your entry was saved.</p>
+              <div className="btn-container">
+                <button
+                  className="action-btn"
+                  onClick={() => setActivePage("reflect")}
+                >
+                  Journal again
+                </button>
+                <button
+                  className="action-btn"
+                  onClick={() => setActivePage("journal")}
+                >
+                  View Journal
+                </button>
+              </div>
             </div>
-          ))}
-        </div>
-        <button className="action-btn" onClick={() => saveEntry()}>
-          Log to journal
-        </button>
-      </Page>
+          </div>
+        </Page>
+      )}
     </div>
   );
 }

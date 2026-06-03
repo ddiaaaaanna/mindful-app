@@ -9,6 +9,7 @@ import { AppContext } from "./context/AppContext.tsx";
 import Navigation from "./components/Navigation/Navigation.tsx";
 import { AnimatePresence, motion } from "framer-motion";
 import Notes from "./pages/Notes/Notes.tsx";
+import Journal from "./pages/Journal/Journal.tsx";
 
 function App() {
   const name: string | null = localStorage.getItem("name");
@@ -56,6 +57,7 @@ function App() {
       {activePage === "reflect" && <Reflection />}
       {activePage === "explore" && <Exploration />}
       {activePage === "notes" && <Notes />}
+      {activePage === "journal" && <Journal />}
     </>
   );
 }
