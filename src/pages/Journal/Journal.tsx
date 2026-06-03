@@ -1,5 +1,5 @@
 import JournalEntry from "../../components/JournalEntries/JournalEntries";
-import Page from "../../components/Page/Page";
+// import Page from "../../components/Page/Page";
 import Notes from "../Notes/Notes";
 import "./Journal.css";
 
