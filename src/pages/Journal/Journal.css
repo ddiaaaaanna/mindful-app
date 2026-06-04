@@ -10,12 +10,16 @@
   flex-direction: column;
   min-height: 100vh;
   transform: translateY(-20px);
+  overflow-x: hidden;
 }
 
 .journal-title {
   position: fixed;
-  top: 20%;
-  opacity: 0.3;
-  left: 5%;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.2;
   font-size: 25rem;
+  user-select: none;
+  padding: 0;
 }
