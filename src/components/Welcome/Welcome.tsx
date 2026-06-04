@@ -8,7 +8,7 @@ function Welcome({ name }: WelcomeProps) {
   return (
     <>
       <h1 className="main-title">
-        {name === "anonymous" ? "Welcome ⏾" : `Welcome, ${name} 𖤓`}
+        {name === "anonymous" ? "Welcome ❁" : `Welcome, ${name} 𖤓`}
       </h1>
 
       <p className="main-subtitle">

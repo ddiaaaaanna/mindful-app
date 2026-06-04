@@ -10,6 +10,7 @@ import Navigation from "./components/Navigation/Navigation.tsx";
 import { AnimatePresence, motion } from "framer-motion";
 import Notes from "./pages/Notes/Notes.tsx";
 import Journal from "./pages/Journal/Journal.tsx";
+import Settings from "./pages/Settings/Settings.tsx";
 
 function App() {
   const name: string | null = localStorage.getItem("name");
@@ -58,6 +59,7 @@ function App() {
       {activePage === "explore" && <Exploration />}
       {activePage === "notes" && <Notes />}
       {activePage === "journal" && <Journal />}
+      {activePage === "settings" && <Settings />}
     </>
   );
 }

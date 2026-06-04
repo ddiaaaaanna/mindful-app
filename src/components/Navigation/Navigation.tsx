@@ -27,7 +27,12 @@ function Navigation() {
         </li>
 
         <li>
-          <button className="nav-item">change theme</button>
+          <button
+            className="nav-item"
+            onClick={() => setActivePage("settings")}
+          >
+            settings
+          </button>
         </li>
       </ul>
     </div>
