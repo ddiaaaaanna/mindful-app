@@ -72,10 +72,15 @@ function Reflection() {
 
     const filledAnswers = prompts.filter((prompt) => prompt.answer !== "");
 
-    journalEntry.push({
-      text: filledAnswers,
-      date: new Date().toLocaleDateString(),
-      id: Date.now(),
+    // Want to take a swing at writing that loop? Think about: what do you loop over (filledAnswers), and for each one, what shape do you push (text = the question, answer = the answer, date, and a unique id)? Give it a try and I'll check it — especially how you make the id unique.
+
+    filledAnswers.forEach((prompt) => {
+      journalEntry.push({
+        text: prompt.text,
+        answer: prompt.answer,
+        date: new Date().toLocaleDateString(),
+        id: crypto.randomUUID(),
+      });
     });
 
     localStorage.setItem("journalEntry", JSON.stringify(journalEntry));

@@ -67,7 +67,7 @@ function Notes() {
                   layout: { duration: 0.3 },
                 }}
               >
-                <div className="note-content">
+                <div className="note-content" key={note.id}>
                   <div className="note-text">
                     <p className="note-topic">{note.text}</p>
                     <div className="session-details">
