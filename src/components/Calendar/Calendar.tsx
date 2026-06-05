@@ -4,6 +4,7 @@ function Calendar() {
   const today = new Date();
   const year = today.getFullYear();
   const month = today.getMonth();
+  const monthName = today.toLocaleDateString("default", { month: "long" });
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const startDay = new Date(year, month, 1).getDay();
   const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
@@ -18,30 +19,35 @@ function Calendar() {
     <div className="calendar">
       <p className="description">Active days</p>
       <div className="calendar-container">
-        {weekdays.map((day) => (
-          <p key={day} className="weekday">
-            {day}
-          </p>
-        ))}
+        <div className="calendar-header">
+          <p className="description">{monthName}</p>
+        </div>
+        <div className="calendar-content">
+          {weekdays.map((day) => (
+            <p key={day} className="weekday">
+              {day}
+            </p>
+          ))}
 
-        {offsetArray.map((_, i) => (
-          <div key={i}></div>
-        ))}
+          {offsetArray.map((_, i) => (
+            <div key={i}></div>
+          ))}
 
-        {days.map((day) => (
-          <p
-            key={day}
-            className={`day ${
-              activeDays.includes(
-                new Date(year, month, day).toLocaleDateString(),
-              )
-                ? "active-day"
-                : ""
-            }`}
-          >
-            {day}
-          </p>
-        ))}
+          {days.map((day) => (
+            <p
+              key={day}
+              className={`day ${
+                activeDays.includes(
+                  new Date(year, month, day).toLocaleDateString(),
+                )
+                  ? "active-day"
+                  : ""
+              }`}
+            >
+              {day}
+            </p>
+          ))}
+        </div>
       </div>
     </div>
   );

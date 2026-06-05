@@ -5,18 +5,22 @@
 }
 
 .calendar-container {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
   border: var(--glass-border);
   border-radius: var(--border-radius);
   padding: 10px;
+  color: var(--text-input);
+  box-shadow: var(--card-shadow);
+}
+
+.calendar-content {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
 }
 
 .day {
   border: var(--glass-border);
   border-radius: var(--border-radius-sm);
-
   padding: 4px;
   margin: 0;
 }
@@ -32,4 +36,11 @@
     transparent 70%
   );
   border: 1px solid rgba(74, 111, 227, 0.2);
+}
+
+.calendar-header > p {
+  margin: 5px 0 15px;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+  color: var(--text-input);
 }
