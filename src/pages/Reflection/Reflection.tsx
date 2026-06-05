@@ -5,6 +5,7 @@ import { MdOutlineEdit } from "react-icons/md";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { AppContext } from "../../context/AppContext";
 import Page from "../../components/Page/Page";
+import { logActiveDay } from "../../utils/logActiveDay";
 
 type PromptType = {
   originalPrompt: string;
@@ -72,8 +73,6 @@ function Reflection() {
 
     const filledAnswers = prompts.filter((prompt) => prompt.answer !== "");
 
-    // Want to take a swing at writing that loop? Think about: what do you loop over (filledAnswers), and for each one, what shape do you push (text = the question, answer = the answer, date, and a unique id)? Give it a try and I'll check it — especially how you make the id unique.
-
     filledAnswers.forEach((prompt) => {
       journalEntry.push({
         text: prompt.text,
@@ -86,6 +85,7 @@ function Reflection() {
     localStorage.setItem("journalEntry", JSON.stringify(journalEntry));
     setPrompts(prompts.map((prompt) => ({ ...prompt, answer: "" })));
     setLogJournal(true);
+    logActiveDay();
   }
 
   function handlePromptChange(index: number, value: string) {

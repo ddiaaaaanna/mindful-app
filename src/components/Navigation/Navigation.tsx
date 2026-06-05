@@ -25,7 +25,6 @@ function Navigation() {
             journal
           </button>
         </li>
-
         <li>
           <button
             className="nav-item"

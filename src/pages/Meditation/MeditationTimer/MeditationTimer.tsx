@@ -1,6 +1,7 @@
 import "./MeditationTimer.css";
 import { useEffect, useState, useContext } from "react";
 import { AppContext } from "../../../context/AppContext";
+import { logActiveDay } from "../../../utils/logActiveDay";
 
 type MeditationTimerProps = {
   meditationTimer: number;
@@ -40,6 +41,7 @@ function MeditationTimer({
     if (timeLeft === 0) {
       setMeditationStep("complete");
       setTimerActive(false);
+      logActiveDay();
     }
   }, [timeLeft]);
 
@@ -91,6 +93,7 @@ function MeditationTimer({
                       setTimeLeft(0);
                       setTimerActive(false);
                       setMeditationStep("complete");
+                      logActiveDay();
                     }}
                   >
                     End session
