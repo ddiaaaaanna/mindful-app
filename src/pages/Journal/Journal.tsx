@@ -1,3 +1,4 @@
+import Calendar from "../../components/Calendar/Calendar";
 import JournalEntry from "../../components/JournalEntries/JournalEntries";
 // import Page from "../../components/Page/Page";
 import Notes from "../Notes/Notes";
@@ -12,6 +13,7 @@ function Journal() {
       <div className="journal-content">
         <Notes />
         <JournalEntry />
+        <Calendar />
       </div>
     </div>
   );
