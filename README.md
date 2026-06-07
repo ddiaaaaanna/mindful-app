@@ -16,10 +16,11 @@ A mindfulness app designed to be easy and a pleasant user experience. The user c
 
 ## Features
 
-- Meditation timer
-- Journaling
-- Daily quotes
-- Personal journal page
+- Meditation timer (with duration choice)
+- Guided journaling with customizable prompts
+- Personal journal page (view & delete past entries and notes)
+- Active-days calendar (tracks days you used the app)
+- Name personalization / welcome flow
 
 ## Tech Stack
 
@@ -32,8 +33,6 @@ A mindfulness app designed to be easy and a pleasant user experience. The user c
 
 Coming soon:
 
-- Notes saved to personal journal page
 - Daily quotes with option to save to journal
-- Quotes fetched from external API
 - Theme switcher
 - Mobile app version built with React Native
