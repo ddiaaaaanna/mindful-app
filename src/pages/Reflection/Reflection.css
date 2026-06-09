@@ -69,3 +69,13 @@
   font-size: 12px;
   animation: fadeIn 0.4s ease-in;
 }
+
+.reflect-page .page-header {
+  position: absolute;
+  top: 450px;
+  right: 4%;
+}
+
+.reflect-page .page-header h1 {
+  font-size: 6em;
+}

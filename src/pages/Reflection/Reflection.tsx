@@ -158,6 +158,7 @@ function Reflection() {
     <div className="reflect-page">
       {!logJournal && (
         <Page
+          key="reflect-page"
           title="REFLECT"
           description="Explore your thoughts through guided reflection"
           animation="☀"
@@ -221,7 +222,7 @@ function Reflection() {
       )}
 
       {logJournal && (
-        <Page animation="☀">
+        <Page key="reflect-page" animation="☀" title="REFLECT">
           <div className="completion-panel">
             <div className="">
               <p className="description">Your entry was saved.</p>
