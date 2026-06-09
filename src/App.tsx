@@ -11,6 +11,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Notes from "./pages/Notes/Notes.tsx";
 import Journal from "./pages/Journal/Journal.tsx";
 import Settings from "./pages/Settings/Settings.tsx";
+import Footer from "./components/Footer/Footer.tsx";
 
 function App() {
   const name: string | null = localStorage.getItem("name");
@@ -60,6 +61,26 @@ function App() {
       {activePage === "notes" && <Notes />}
       {activePage === "journal" && <Journal />}
       {activePage === "settings" && <Settings />}
+
+      <AnimatePresence>
+        {isName && !timerActive && (
+          <motion.footer
+            style={{
+              position: "fixed",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              zIndex: 100,
+            }}
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "100%" }}
+            transition={{ duration: 0.7, ease: "easeInOut" }}
+          >
+            <Footer />
+          </motion.footer>
+        )}
+      </AnimatePresence>
     </>
   );
 }
