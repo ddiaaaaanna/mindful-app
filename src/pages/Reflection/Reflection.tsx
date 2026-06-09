@@ -1,5 +1,5 @@
 import "./Reflection.css";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { TbCheckbox } from "react-icons/tb";
 import { MdOutlineEdit } from "react-icons/md";
 import { IoIosArrowRoundBack } from "react-icons/io";
@@ -137,6 +137,13 @@ function Reflection() {
       }),
     );
   }
+
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => setError(""), 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   function customizePrompts(): void {
     localStorage.setItem(
