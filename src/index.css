@@ -13,11 +13,21 @@
   --text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
   --card-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
   --card-shadow-md: 0 0 30px rgba(255, 255, 255, 0.35);
+  --focus-outline: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 /* REFACTOR--- ADD OWN FOCUS  */
-*:focus {
+*:focus:not(:focus-visible) {
   outline: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
 }
 
 a {

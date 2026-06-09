@@ -7,6 +7,12 @@
   border: var(--glass-border);
   box-shadow: var(--card-shadow);
   transition: transform 0.3s ease;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  text-align: inherit;
+  cursor: pointer;
 }
 
 .card-title {

@@ -21,6 +21,7 @@ A mindfulness app designed to be easy and a pleasant user experience. The user c
 - Personal journal page (view & delete past entries and notes)
 - Active-days calendar (tracks days you used the app)
 - Name personalization / welcome flow
+- Accessible keyboard navigation with custom focus indicators
 
 ## Tech Stack
 

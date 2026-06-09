@@ -4,7 +4,6 @@ import WelcomeModal from "../../components/WelcomeModal/WelcomeModal.tsx";
 import Card from "../../components/Card/Card.tsx";
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext.tsx";
-import Footer from "../../components/Footer/Footer.tsx";
 
 type HomeProps = {
   isName: string | null;
@@ -53,7 +52,6 @@ function Home({ isName, setIsName, setIsTransitioning }: HomeProps) {
           </div>
         </div>
       )}
-      <Footer />
     </>
   );
 }

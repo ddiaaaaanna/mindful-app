@@ -12,7 +12,7 @@ function Card({ title, emoji, description, onClick }: CardProps) {
   const [isActive, setIsActive] = useState<boolean>(false);
 
   return (
-    <div
+    <button
       className="card-content flex-center"
       onMouseEnter={() => setIsActive(true)}
       onMouseLeave={() => setIsActive(false)}
@@ -26,7 +26,7 @@ function Card({ title, emoji, description, onClick }: CardProps) {
       ) : (
         <p className="card-description">{description}</p>
       )}
-    </div>
+    </button>
   );
 }
 
