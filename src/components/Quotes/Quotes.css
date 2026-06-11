@@ -1,0 +1,24 @@
+.journal-quote {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.journal-quote-container {
+  border: var(--glass-border);
+  border-radius: var(--border-radius);
+  padding: 10px;
+  color: var(--text-input);
+  box-shadow: var(--card-shadow);
+  max-width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+.quote-action > button {
+  position: absolute;
+  top: 50px;
+  right: 8px;
+}

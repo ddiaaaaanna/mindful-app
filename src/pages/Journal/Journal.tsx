@@ -13,8 +13,10 @@ function Journal() {
       <div className="journal-content">
         <Notes />
         <JournalEntry />
-        <Calendar />
-        <Quotes />
+        <div className="container-s">
+          <Calendar />
+          <Quotes />
+        </div>
       </div>
     </div>
   );

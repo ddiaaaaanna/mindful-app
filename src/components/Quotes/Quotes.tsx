@@ -20,7 +20,11 @@ function Quotes() {
   }
 
   return (
-    <>
+    <div className="quotes-container">
+      <div className="container-header">
+        <p className="description">Your quotes</p>
+      </div>
+
       {quotes.length === 0 && (
         <div className="empty-state flex-center">
           <p className="description">No quotes yet</p>
@@ -28,13 +32,22 @@ function Quotes() {
       )}
 
       {quotes.map((quote) => (
-        <div key={quote.id} className="quote-container">
-          <p className="quote-author">{quote.author}</p>
-          <p className="quote-text">{quote.text}</p>
-          <button onClick={() => removeQuote(quote.id)}>x</button>
+        <div key={quote.id} className="journal-quote-container">
+          <div className="quote-content">
+            <p className="journal-quote quote-author">{quote.author}</p>
+            <p className="journal-quote quote-text">{quote.text}</p>
+          </div>
+          <div className="quote-action">
+            <button
+              className="note-del-btn"
+              onClick={() => removeQuote(quote.id)}
+            >
+              x
+            </button>
+          </div>
         </div>
       ))}
-    </>
+    </div>
   );
 }
 
