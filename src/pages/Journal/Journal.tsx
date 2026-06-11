@@ -1,5 +1,6 @@
 import Calendar from "../../components/Calendar/Calendar";
 import JournalEntry from "../../components/JournalEntries/JournalEntries";
+import Quotes from "../../components/Quotes/Quotes";
 import Notes from "../Notes/Notes";
 import "./Journal.css";
 
@@ -13,6 +14,7 @@ function Journal() {
         <Notes />
         <JournalEntry />
         <Calendar />
+        <Quotes />
       </div>
     </div>
   );

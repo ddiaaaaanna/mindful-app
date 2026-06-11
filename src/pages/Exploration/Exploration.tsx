@@ -14,6 +14,18 @@ function Exploration() {
   const dayOfYear = Math.floor(diff / MS_PER_DAY);
   const todaysQuote = quotes[dayOfYear % quotes.length];
 
+  function saveQuote(): void {
+    const savedQuotes = JSON.parse(localStorage.getItem("savedQuotes") ?? "[]");
+
+    savedQuotes.push({
+      author: todaysQuote.author,
+      text: todaysQuote.quote,
+      id: crypto.randomUUID(),
+    });
+
+    localStorage.setItem("savedQuotes", JSON.stringify(savedQuotes));
+  }
+
   return (
     <>
       <Page title="EXPLORE" description="Thought of the day">
@@ -22,7 +34,9 @@ function Exploration() {
           <p className="quote-text">{todaysQuote.quote}</p>
         </div>
 
-        <button className="action-btn">Add to journal</button>
+        <button className="action-btn" onClick={() => saveQuote()}>
+          Add to journal
+        </button>
       </Page>
     </>
   );
