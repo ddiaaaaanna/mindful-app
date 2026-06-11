@@ -6,6 +6,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import { AppContext } from "../../context/AppContext";
 import Page from "../../components/Page/Page";
 import { logActiveDay } from "../../utils/logActiveDay";
+import { motion, AnimatePresence } from "framer-motion";
 
 type PromptType = {
   originalPrompt: string;
@@ -163,94 +164,113 @@ function Reflection() {
 
   return (
     <div className="reflect-page">
-      {!logJournal && (
-        <Page
-          key="reflect-page"
-          title="REFLECT"
-          description="Explore your thoughts through guided reflection"
-          animation="☀"
-        >
-          <div className="prompt-container">
-            {prompts.map((prompt, index) => (
-              <div key={index}>
-                <div className="prompt-controls">
-                  {!prompt.isEdited ? (
-                    <>
-                      <span className="prompt-description">{prompt.text}</span>
-                      <button
-                        className="prompt-edit-btn"
-                        onClick={() => togglePromptEdit(index)}
-                      >
-                        <MdOutlineEdit />
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <input
-                        autoFocus
-                        className="prompt-editor"
-                        value={prompt.text}
-                        onChange={(e) => editPrompt(index, e.target.value)}
-                      />
-                      <div className="flex-center">
-                        <button
-                          className="prompt-edit-btn"
-                          onClick={() => {
-                            (customizePrompts(), togglePromptEdit(index));
-                          }}
-                        >
-                          <TbCheckbox />
-                        </button>
-                        <button
-                          className="prompt-edit-btn"
-                          onClick={() => cancelPrompt(index)}
-                        >
-                          <IoIosArrowRoundBack />
-                        </button>
-                      </div>
-                    </>
-                  )}
+      <Page
+        title="REFLECT"
+        description={
+          !logJournal
+            ? "Explore your thoughts through guided reflection"
+            : undefined
+        }
+        animation="☀"
+      >
+        <AnimatePresence mode="wait">
+          {!logJournal ? (
+            <motion.div
+              key="form"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <div className="prompt-container">
+                {prompts.map((prompt, index) => (
+                  <div key={index}>
+                    <div className="prompt-controls">
+                      {!prompt.isEdited ? (
+                        <>
+                          <span className="prompt-description">
+                            {prompt.text}
+                          </span>
+                          <button
+                            className="prompt-edit-btn"
+                            onClick={() => togglePromptEdit(index)}
+                          >
+                            <MdOutlineEdit />
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <input
+                            autoFocus
+                            className="prompt-editor"
+                            value={prompt.text}
+                            onChange={(e) => editPrompt(index, e.target.value)}
+                          />
+                          <div className="flex-center">
+                            <button
+                              className="prompt-edit-btn"
+                              onClick={() => {
+                                (customizePrompts(), togglePromptEdit(index));
+                              }}
+                            >
+                              <TbCheckbox />
+                            </button>
+                            <button
+                              className="prompt-edit-btn"
+                              onClick={() => cancelPrompt(index)}
+                            >
+                              <IoIosArrowRoundBack />
+                            </button>
+                          </div>
+                        </>
+                      )}
+                    </div>
+
+                    <textarea
+                      className={`prompt-txtarea ${error ? "input-error" : ""}`}
+                      onChange={(e) => {
+                        (handlePromptChange(index, e.target.value),
+                          setError(""));
+                      }}
+                      value={prompt.answer}
+                    ></textarea>
+                  </div>
+                ))}
+              </div>
+              <button className="action-btn" onClick={() => saveEntry()}>
+                Log to journal
+              </button>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="saved"
+              className="completion-panel"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <div className="">
+                <p className="description">Your entry was saved.</p>
+                <div className="btn-container">
+                  <button
+                    className="action-btn"
+                    onClick={() => setLogJournal(false)}
+                  >
+                    Journal again
+                  </button>
+                  <button
+                    className="action-btn"
+                    onClick={() => setActivePage("journal")}
+                  >
+                    View Journal
+                  </button>
                 </div>
-
-                <textarea
-                  className={`prompt-txtarea ${error ? "input-error" : ""}`}
-                  onChange={(e) => {
-                    (handlePromptChange(index, e.target.value), setError(""));
-                  }}
-                  value={prompt.answer}
-                ></textarea>
               </div>
-            ))}
-          </div>
-          <button className="action-btn" onClick={() => saveEntry()}>
-            Log to journal
-          </button>
-        </Page>
-      )}
-
-      {logJournal && (
-        <Page key="reflect-page" animation="☀" title="REFLECT">
-          <div className="completion-panel">
-            <div className="">
-              <p className="description">Your entry was saved.</p>
-              <div className="btn-container">
-                <button
-                  className="action-btn"
-                  onClick={() => setLogJournal(false)}
-                >
-                  Journal again
-                </button>
-                <button
-                  className="action-btn"
-                  onClick={() => setActivePage("journal")}
-                >
-                  View Journal
-                </button>
-              </div>
-            </div>
-          </div>
-        </Page>
-      )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </Page>
     </div>
   );
 }

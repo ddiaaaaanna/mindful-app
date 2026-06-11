@@ -68,6 +68,9 @@ function MeditationComplete({
               >
                 Journal History
               </button>
+              <button className="action-btn" onClick={() => setActivePage("")}>
+                Home
+              </button>
             </div>
           </div>
         </div>

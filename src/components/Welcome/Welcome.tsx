@@ -6,7 +6,7 @@ type WelcomeProps = {
 
 function Welcome({ name }: WelcomeProps) {
   return (
-    <>
+    <div className="welcome-screen">
       <h1 className="main-title">
         {name === "anonymous" ? "Welcome ❁" : `Welcome, ${name} 𖤓`}
       </h1>
@@ -15,7 +15,7 @@ function Welcome({ name }: WelcomeProps) {
         A mindfulness app for short daily check-ins. Choose an exercise, spend a
         few minutes with yourself, and jot down what you notice.
       </p>
-    </>
+    </div>
   );
 }
 
