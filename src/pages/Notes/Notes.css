@@ -17,7 +17,7 @@
   scroll-behavior: smooth;
   box-shadow: var(--card-shadow);
   border: var(--glass-border);
-  border-radius: var(--border-radius);
+  border-radius: 0 8px 8px 8px;
   background: rgba(255, 255, 255, 0.3);
 }
 
@@ -67,6 +67,7 @@
   position: sticky;
   bottom: 0;
   background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(1rem);
 }
 
 .pagination-btn-container > button {

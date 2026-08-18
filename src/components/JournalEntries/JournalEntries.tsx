@@ -15,12 +15,29 @@ function JournalEntry() {
   const [entries, setEntries] = useState<Entry[]>(
     JSON.parse(localStorage.getItem("journalEntry") ?? "[]"),
   );
+
+  const groupedEntries = entries.reduce(
+    (acc, entry) => {
+      const key = new Date(entry.date).toLocaleString("default", {
+        month: "long",
+        year: "numeric",
+      });
+      if (acc[key]) {
+        acc[key].push(entry);
+      } else {
+        acc[key] = [entry];
+      }
+      return acc;
+    },
+    {} as Record<string, Entry[]>,
+  );
+
+  const groupedDates = Object.keys(groupedEntries);
+  const totalPages = groupedDates.length;
   const [currentPage, setCurrentPage] = useState(1);
-  const entriesPerPage = 1;
-  const startIndex = (currentPage - 1) * entriesPerPage;
-  const endIndex = startIndex + entriesPerPage;
-  const visibleNotes = entries.slice(startIndex, endIndex);
-  const totalPages = Math.ceil(entries.length / entriesPerPage);
+  const currentMonth = groupedDates[currentPage - 1];
+
+  const visibleEntries = groupedEntries[currentMonth] || [];
 
   const pageAmount = Array(totalPages).fill(1);
 
@@ -47,9 +64,15 @@ function JournalEntry() {
     <div className="box-container">
       <div className="container-header">
         <p className="description">Your journal entries</p>
+
+        {entries.length > 0 && (
+          <div className="month-container">
+            <p>{currentMonth}</p>
+          </div>
+        )}
       </div>
 
-      <div className="notes-page ">
+      <div className="notes-page">
         <motion.div layout className="notes-container">
           {entries.length === 0 && (
             <div className="empty-state flex-center">
@@ -58,8 +81,8 @@ function JournalEntry() {
           )}
 
           <div className="notes-list">
-            <AnimatePresence mode="wait">
-              {visibleNotes.map((entry: Entry) => (
+            <AnimatePresence mode="popLayout">
+              {visibleEntries.map((entry: Entry) => (
                 <motion.div
                   key={entry.id}
                   layout

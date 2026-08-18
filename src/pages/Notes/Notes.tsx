@@ -15,12 +15,29 @@ function Notes() {
   const [notes, setNotes] = useState<Note[]>(
     JSON.parse(localStorage.getItem("notes") ?? "[]"),
   );
+
+  const groupedEntries = notes.reduce(
+    (acc, entry) => {
+      const key = new Date(entry.date).toLocaleString("default", {
+        month: "long",
+        year: "numeric",
+      });
+      if (acc[key]) {
+        acc[key].push(entry);
+      } else {
+        acc[key] = [entry];
+      }
+      return acc;
+    },
+    {} as Record<string, Note[]>,
+  );
+
+  const groupedDates = Object.keys(groupedEntries);
+  const totalPages = groupedDates.length;
   const [currentPage, setCurrentPage] = useState(1);
-  const notesPerPage = 5;
-  const startIndex = (currentPage - 1) * notesPerPage;
-  const endIndex = startIndex + notesPerPage;
-  const visibleNotes = notes.slice(startIndex, endIndex);
-  const totalPages = Math.ceil(notes.length / notesPerPage);
+  const currentMonth = groupedDates[currentPage - 1];
+
+  const visibleNotes = groupedEntries[currentMonth] || [];
 
   const pageAmount = Array(totalPages).fill(1);
 
@@ -47,6 +64,11 @@ function Notes() {
     <div className="box-container">
       <div className="container-header">
         <p className="description">Your notes</p>
+        {notes.length > 0 && (
+          <div className="month-container">
+            <p>{currentMonth}</p>
+          </div>
+        )}
       </div>
       <div className="notes-page ">
         <motion.div layout className="notes-container">
