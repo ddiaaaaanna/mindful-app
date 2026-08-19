@@ -16,6 +16,8 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 6px;
+  grid-template-rows: auto repeat(6, 29px);
+  grid-auto-rows: 29px;
 }
 
 .day {
@@ -43,4 +45,16 @@
   text-transform: lowercase;
   letter-spacing: 1px;
   color: var(--text-input);
+}
+
+.calendar-controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.calendar-controls button {
+  border: none;
+  background: transparent;
+  padding: 10px;
+  color: var(--text-action-btn);
 }
